@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */; };
-		01E99A562C37D7080090C398 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A552C37D7080090C398 /* ContentView.swift */; };
 		01E99A582C37D7090090C398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E99A572C37D7090090C398 /* Assets.xcassets */; };
 		01E99A5B2C37D7090090C398 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E99A5A2C37D7090090C398 /* Preview Assets.xcassets */; };
+		01E99A672C37D9D10090C398 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A662C37D9D10090C398 /* Constants.swift */; };
+		01E99A692C37DA0B0090C398 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A682C37DA0B0090C398 /* RootView.swift */; };
+		01E99A722C37DE3B0090C398 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A712C37DE3B0090C398 /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01E99A502C37D7080090C398 /* Mobil Ajanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobil Ajanda.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobil_AjandaApp.swift; sourceTree = "<group>"; };
-		01E99A552C37D7080090C398 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		01E99A572C37D7090090C398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01E99A5A2C37D7090090C398 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		01E99A662C37D9D10090C398 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		01E99A682C37DA0B0090C398 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		01E99A712C37DE3B0090C398 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +56,11 @@
 			isa = PBXGroup;
 			children = (
 				01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */,
-				01E99A552C37D7080090C398 /* ContentView.swift */,
-				01E99A572C37D7090090C398 /* Assets.xcassets */,
+				01E99A612C37D9200090C398 /* App */,
+				01E99A642C37D9680090C398 /* Helpers */,
+				01E99A732C37DF7A0090C398 /* SharedViews */,
+				01E99A702C37DE0B0090C398 /* Service */,
+				01E99A622C37D9340090C398 /* Resources */,
 				01E99A592C37D7090090C398 /* Preview Content */,
 			);
 			path = "Mobil Ajanda";
@@ -65,6 +72,173 @@
 				01E99A5A2C37D7090090C398 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		01E99A612C37D9200090C398 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A782C37E0500090C398 /* Auth */,
+				01E99A742C37E0210090C398 /* Search */,
+				01E99A682C37DA0B0090C398 /* RootView.swift */,
+				01E99A6A2C37DA630090C398 /* Agenda */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		01E99A622C37D9340090C398 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A632C37D9480090C398 /* Json */,
+				01E99A572C37D7090090C398 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		01E99A632C37D9480090C398 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		01E99A642C37D9680090C398 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A6E2C37DB440090C398 /* SharedView */,
+				01E99A652C37D96F0090C398 /* Extensions */,
+				01E99A662C37D9D10090C398 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		01E99A652C37D96F0090C398 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		01E99A6A2C37DA630090C398 /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A6B2C37DA720090C398 /* Model */,
+				01E99A6D2C37DA7F0090C398 /* View */,
+				01E99A6C2C37DA780090C398 /* ViewModel */,
+			);
+			path = Agenda;
+			sourceTree = "<group>";
+		};
+		01E99A6B2C37DA720090C398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01E99A6C2C37DA780090C398 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01E99A6D2C37DA7F0090C398 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A6F2C37DBB50090C398 /* SharedView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01E99A6E2C37DB440090C398 /* SharedView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SharedView;
+			sourceTree = "<group>";
+		};
+		01E99A6F2C37DBB50090C398 /* SharedView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SharedView;
+			sourceTree = "<group>";
+		};
+		01E99A702C37DE0B0090C398 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A712C37DE3B0090C398 /* ApiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		01E99A732C37DF7A0090C398 /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SharedViews;
+			sourceTree = "<group>";
+		};
+		01E99A742C37E0210090C398 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A752C37E02B0090C398 /* Model */,
+				01E99A772C37E0380090C398 /* View */,
+				01E99A762C37E0310090C398 /* ViewModel */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		01E99A752C37E02B0090C398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01E99A762C37E0310090C398 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01E99A772C37E0380090C398 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01E99A782C37E0500090C398 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				01E99A7B2C37E0640090C398 /* Model */,
+				01E99A7A2C37E05F0090C398 /* View */,
+				01E99A792C37E0560090C398 /* ViewModel */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		01E99A792C37E0560090C398 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		01E99A7A2C37E05F0090C398 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01E99A7B2C37E0640090C398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +311,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01E99A562C37D7080090C398 /* ContentView.swift in Sources */,
+				01E99A692C37DA0B0090C398 /* RootView.swift in Sources */,
 				01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */,
+				01E99A722C37DE3B0090C398 /* ApiService.swift in Sources */,
+				01E99A672C37D9D10090C398 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

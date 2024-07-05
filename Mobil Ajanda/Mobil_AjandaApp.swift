@@ -11,7 +11,7 @@ import SwiftUI
 struct Mobil_AjandaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
