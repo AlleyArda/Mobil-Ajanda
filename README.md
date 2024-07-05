@@ -1,7 +1,7 @@
 # Dil
 ![Swift](https://img.shields.io/badge/language-Swift-orange.svg)
 
-# <h1 style="color:blue;">MeetingScheduler</h1>
+# <h1 style="color:blue;">Mobil Ajanda</h1>
 
 MeetingScheduler, kullanıcıların toplantılarını ve şoförlerin görevlerini yönetmek için kullanılan bir macOS uygulamasıdır. Bu proje, MVVM mimarisi ile geliştirilmiş ve SwiftUI ile kullanıcı arayüzü tasarlanmıştır.
 
