@@ -9,9 +9,35 @@ import SwiftUI
 
 struct RootView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                ScrollView{
+                    ForEach(0..<40) { item in
+                        VStack {
+                            Text("Hello, World!")
+                                .bold()
+                                .background(.red)
+                            
+                            Text("Merhaba Arda!")
+                                .bold()
+                                .background(.red)
+                        }
+                        .frame(maxWidth: .infinity)
+
+                        
+                    }
+                }
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(.yellow)
+            .navigationTitle("Başlık")
+
+        }
+        
     }
 }
+
 
 #Preview {
     RootView()
