@@ -3,7 +3,7 @@
 
 # <h1 style="color:blue;">Mobil Ajanda</h1>
 
-MeetingScheduler, kullanıcıların toplantılarını ve şoförlerin görevlerini yönetmek için kullanılan bir macOS uygulamasıdır. Bu proje, MVVM mimarisi ile geliştirilmiş ve SwiftUI ile kullanıcı arayüzü tasarlanmıştır.
+Mobil-Ajanda , kullanıcıların toplantılarını ve şoförlerin görevlerini yönetmek için kullanılan bir macOS uygulamasıdır. Bu proje, MVVM mimarisi ile geliştirilmiş ve SwiftUI ile kullanıcı arayüzü tasarlanmıştır.
 
 ## Özellikler
 
@@ -23,13 +23,13 @@ MeetingScheduler, kullanıcıların toplantılarını ve şoförlerin görevleri
 
 1. Bu repository'i klonlayın:
    ```bash
-   git clone https://github.com/AlleyArda/MeetingScheduler.git
+   git clone https://github.com/AlleyArda/Mobil-Ajanda.git
    
 
  ----------------------------------------------------------------------
 2.	Xcode’u açın ve projeyi yükleyin:
-      cd MeetingScheduler
-      open MeetingScheduler.xcodeproj
+      cd Mobil-Ajanda
+      open Mobil-Ajanda.xcodeproj
 
 ---------------------------------------------------------------------- 
 3.	Projeyi derleyin ve çalıştırın.
@@ -47,34 +47,6 @@ Toplantılar ve Görevler
 Başkan olarak giriş yaptığınızda, kendi toplantılarınızı görebilirsiniz. Şoför olarak giriş yaptığınızda, taşımanız gereken görevleri görüntüleyebilirsiniz.
 
 
-
-MVVM Mimarisi
-
-	•	Model: Kullanıcı ve toplantı verilerini tanımlar.
-	•	UserModel.swift
-	•	MockUserDataSource.swift
-	•	ViewModel: Verileri işler ve View’a sunar.
-	•	UserViewModel.swift
-	•	MeetingViewModel.swift
-	•	View: Kullanıcı arayüzünü oluşturur.
-	•	LoginView.swift
-	•	ChairmanView.swift
-	•	DriverView.swift
-
- Dosya Yapısı
-
- MeetingScheduler
-├── MeetingSchedulerApp.swift
-├── Model
-│   ├── UserModel.swift
-│   ├── MockUserDataSource.swift
-├── ViewModel
-│   ├── UserViewModel.swift
-│   ├── MeetingViewModel.swift
-├── View
-│   ├── LoginView.swift
-│   ├── ChairmanView.swift
-│   ├── DriverView.swift
 
 Katkıda Bulunma
 
