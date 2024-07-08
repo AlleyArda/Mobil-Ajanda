@@ -5,12 +5,19 @@ struct RootView: View {
     @StateObject private var authViewModel = AuthenticationViewModel()
     
     var body: some View {
-        Group {
-            if authViewModel.isAuthenticated {
+        if authViewModel.isAuthenticated {
+            switch authViewModel.currentUser?.role {
+            case .manager:
                 MainView(currentUser: authViewModel.currentUser!)
-            } else {
+            case .driver:
+                DriverView(currentUser: authViewModel.currentUser!)
+            case .securityChief:
+                MainView(currentUser: authViewModel.currentUser!) // Şimdilik manager gibi görsün
+            case .none:
                 LoginView()
             }
+        } else {
+            LoginView()
         }
     }
 }

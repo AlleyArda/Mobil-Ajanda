@@ -1,3 +1,4 @@
+// App/Agenda/View/MainView.swift
 import SwiftUI
 
 struct MainView: View {
@@ -8,16 +9,16 @@ struct MainView: View {
         NavigationView {
             VStack {
                 SearchBar(text: $viewModel.searchQuery)
-                List(viewModel.filteredMeetings(for: currentUser)) { meeting in
+                List(viewModel.meetings) { meeting in
                     NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                         MeetingRow(meeting: meeting)
                     }
                 }
                 .navigationTitle("Günlük Görüşmeler")
             }
-        }
-        .onAppear {
-            viewModel.currentUser = currentUser
+            .onAppear {
+                viewModel.fetchMeetings(for: currentUser)
+            }
         }
     }
 }

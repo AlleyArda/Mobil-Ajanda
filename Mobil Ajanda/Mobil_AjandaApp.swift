@@ -1,14 +1,8 @@
-//
-//  Mobil_AjandaApp.swift
-//  Mobil Ajanda
-//
-//  Created by Arda Kulaksız on 5.07.2024.
-//
-
+// App/ContentView.swift
 import SwiftUI
 
 @main
-struct Mobil_AjandaApp: App {
+struct MobilAjandaApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()

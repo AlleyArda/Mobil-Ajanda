@@ -1,18 +1,24 @@
-//
-//  DriverView.swift
-//  Mobil Ajanda
-//
-//  Created by Arda Kulaksız on 8.07.2024.
-//
-
+// App/Driver/View/DriverView.swift
 import SwiftUI
 
 struct DriverView: View {
+    @StateObject private var viewModel = MeetingViewModel()
+    var currentUser: User
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                SearchBar(text: $viewModel.searchQuery)
+                List(viewModel.meetings) { meeting in
+                    NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
+                        MeetingRow(meeting: meeting)
+                    }
+                }
+                .navigationTitle("Sürücü Görevleri")
+            }
+            .onAppear {
+                viewModel.fetchMeetings(for: currentUser)
+            }
+        }
     }
-}
-
-#Preview {
-    DriverView()
 }

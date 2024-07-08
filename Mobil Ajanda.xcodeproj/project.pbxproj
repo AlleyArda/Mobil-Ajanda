@@ -17,6 +17,9 @@
 		011F8E5D2C3BC54A003AED23 /* MeetingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E5C2C3BC54A003AED23 /* MeetingRow.swift */; };
 		011F8E5F2C3BC55F003AED23 /* MeetingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E5E2C3BC55F003AED23 /* MeetingDetailView.swift */; };
 		011F8E632C3BCD12003AED23 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E622C3BCD12003AED23 /* MockData.swift */; };
+		011F8E6F2C3BDD83003AED23 /* mockMeetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E6E2C3BDD83003AED23 /* mockMeetings.swift */; };
+		011F8E712C3BDDAA003AED23 /* MeetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E702C3BDDAA003AED23 /* MeetingService.swift */; };
+		011F8E752C3BDE29003AED23 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E742C3BDE29003AED23 /* DriverView.swift */; };
 		01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */; };
 		01E99A582C37D7090090C398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E99A572C37D7090090C398 /* Assets.xcassets */; };
 		01E99A5B2C37D7090090C398 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E99A5A2C37D7090090C398 /* Preview Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		011F8E5C2C3BC54A003AED23 /* MeetingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingRow.swift; sourceTree = "<group>"; };
 		011F8E5E2C3BC55F003AED23 /* MeetingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDetailView.swift; sourceTree = "<group>"; };
 		011F8E622C3BCD12003AED23 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		011F8E6E2C3BDD83003AED23 /* mockMeetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mockMeetings.swift; sourceTree = "<group>"; };
+		011F8E702C3BDDAA003AED23 /* MeetingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingService.swift; sourceTree = "<group>"; };
+		011F8E742C3BDE29003AED23 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DriverView.swift; path = "Mobil Ajanda/Helpers/Service/DriverView.swift"; sourceTree = SOURCE_ROOT; };
 		01E99A502C37D7080090C398 /* Mobil Ajanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobil Ajanda.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobil_AjandaApp.swift; sourceTree = "<group>"; };
 		01E99A572C37D7090090C398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +62,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011F8E722C3BDDCB003AED23 /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				011F8E732C3BDE1E003AED23 /* View */,
+			);
+			path = Driver;
+			sourceTree = "<group>";
+		};
+		011F8E732C3BDE1E003AED23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				011F8E742C3BDE29003AED23 /* DriverView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		01E99A472C37D7080090C398 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				01E99A682C37DA0B0090C398 /* RootView.swift */,
+				011F8E722C3BDDCB003AED23 /* Driver */,
 				01E99A6A2C37DA630090C398 /* Agenda */,
 				01E99A782C37E0500090C398 /* Auth */,
 				01E99A742C37E0210090C398 /* Search */,
@@ -116,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				011F8E622C3BCD12003AED23 /* MockData.swift */,
+				011F8E6E2C3BDD83003AED23 /* mockMeetings.swift */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -186,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				01E99A712C37DE3B0090C398 /* ApiService.swift */,
+				011F8E702C3BDDAA003AED23 /* MeetingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -325,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011F8E752C3BDE29003AED23 /* DriverView.swift in Sources */,
 				01E99A692C37DA0B0090C398 /* RootView.swift in Sources */,
 				011F8E532C3BC369003AED23 /* MeetingModel.swift in Sources */,
 				01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */,
@@ -334,6 +360,8 @@
 				011F8E572C3BC3A3003AED23 /* SearchBar.swift in Sources */,
 				01E99A672C37D9D10090C398 /* Constants.swift in Sources */,
 				011F8E5B2C3BC53C003AED23 /* MainView.swift in Sources */,
+				011F8E712C3BDDAA003AED23 /* MeetingService.swift in Sources */,
+				011F8E6F2C3BDD83003AED23 /* mockMeetings.swift in Sources */,
 				011F8E5D2C3BC54A003AED23 /* MeetingRow.swift in Sources */,
 				011F8E5F2C3BC55F003AED23 /* MeetingDetailView.swift in Sources */,
 				011F8E552C3BC38C003AED23 /* MeetingViewModel.swift in Sources */,

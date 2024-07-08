@@ -1,3 +1,4 @@
+// App/Agenda/Model/MeetingModel.swift
 import Foundation
 
 struct Meeting: Identifiable, Codable {
@@ -5,5 +6,7 @@ struct Meeting: Identifiable, Codable {
     var title: String
     var location: String
     var date: Date
-    var notes: String?
+    var managerId: String
+    var driverId: String
+    var notes: String?  // Bu satırı ekleyin
 }
