@@ -5,7 +5,7 @@ import SwiftUI
 struct MobilAjandaApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView()
+            AuthView()
         }
     }
 }

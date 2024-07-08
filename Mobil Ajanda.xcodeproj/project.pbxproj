@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		011F8E4D2C3BC2FA003AED23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E4C2C3BC2FA003AED23 /* User.swift */; };
 		011F8E4F2C3BC311003AED23 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E4E2C3BC311003AED23 /* AuthViewModel.swift */; };
-		011F8E592C3BC4B4003AED23 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E582C3BC4B4003AED23 /* AuthView.swift */; };
 		011F8E632C3BCD12003AED23 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E622C3BCD12003AED23 /* MockData.swift */; };
 		011F8E6F2C3BDD83003AED23 /* mockMeetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E6E2C3BDD83003AED23 /* mockMeetings.swift */; };
 		01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */; };
@@ -18,12 +17,16 @@
 		01E99A672C37D9D10090C398 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A662C37D9D10090C398 /* Constants.swift */; };
 		01E99A692C37DA0B0090C398 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A682C37DA0B0090C398 /* RootView.swift */; };
 		01E99A722C37DE3B0090C398 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A712C37DE3B0090C398 /* ApiService.swift */; };
+		DEB40C0D2C3C100900DD2DF4 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */; };
+		DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */; };
+		DEB40C122C3C117D00DD2DF4 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DEB40C112C3C117D00DD2DF4 /* AlertToast */; };
+		DEB40C142C3C1DE800DD2DF4 /* SecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */; };
+		DED7CDD62C3C0E32009660E9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7CDD52C3C0E32009660E9 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		011F8E4C2C3BC2FA003AED23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		011F8E4E2C3BC311003AED23 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		011F8E582C3BC4B4003AED23 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		011F8E622C3BCD12003AED23 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		011F8E6E2C3BDD83003AED23 /* mockMeetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mockMeetings.swift; sourceTree = "<group>"; };
 		01E99A502C37D7080090C398 /* Mobil Ajanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobil Ajanda.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +36,10 @@
 		01E99A662C37D9D10090C398 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01E99A682C37DA0B0090C398 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		01E99A712C37DE3B0090C398 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
+		DED7CDD52C3C0E32009660E9 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB40C122C3C117D00DD2DF4 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +203,8 @@
 		01E99A7A2C37E05F0090C398 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				011F8E582C3BC4B4003AED23 /* AuthView.swift */,
+				DED7CDD42C3C0E0C009660E9 /* SharedView */,
+				DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +215,16 @@
 				011F8E4C2C3BC2FA003AED23 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DED7CDD42C3C0E0C009660E9 /* SharedView */ = {
+			isa = PBXGroup;
+			children = (
+				DED7CDD52C3C0E32009660E9 /* HeaderView.swift */,
+				DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */,
+				DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */,
+			);
+			path = SharedView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +243,9 @@
 			dependencies = (
 			);
 			name = "Mobil Ajanda";
+			packageProductDependencies = (
+				DEB40C112C3C117D00DD2DF4 /* AlertToast */,
+			);
 			productName = "Mobil Ajanda";
 			productReference = 01E99A502C37D7080090C398 /* Mobil Ajanda.app */;
 			productType = "com.apple.product-type.application";
@@ -252,6 +274,9 @@
 				Base,
 			);
 			mainGroup = 01E99A472C37D7080090C398;
+			packageReferences = (
+				DEB40C102C3C117D00DD2DF4 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 01E99A512C37D7080090C398 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,14 +303,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB40C0D2C3C100900DD2DF4 /* LoginButton.swift in Sources */,
 				01E99A692C37DA0B0090C398 /* RootView.swift in Sources */,
 				01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */,
 				011F8E4F2C3BC311003AED23 /* AuthViewModel.swift in Sources */,
 				01E99A722C37DE3B0090C398 /* ApiService.swift in Sources */,
 				011F8E632C3BCD12003AED23 /* MockData.swift in Sources */,
+				DEB40C142C3C1DE800DD2DF4 /* SecureFieldView.swift in Sources */,
+				DED7CDD62C3C0E32009660E9 /* HeaderView.swift in Sources */,
 				01E99A672C37D9D10090C398 /* Constants.swift in Sources */,
 				011F8E6F2C3BDD83003AED23 /* mockMeetings.swift in Sources */,
-				011F8E592C3BC4B4003AED23 /* AuthView.swift in Sources */,
+				DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */,
 				011F8E4D2C3BC2FA003AED23 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mobil Ajanda/Preview Content\"";
-				DEVELOPMENT_TEAM = HRSNMQP9XK;
+				DEVELOPMENT_TEAM = 5RM3B24YU6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -433,7 +461,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.aliarda.Mobil-Ajanda";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuumamobile.MobilAjanda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -449,7 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mobil Ajanda/Preview Content\"";
-				DEVELOPMENT_TEAM = HRSNMQP9XK;
+				DEVELOPMENT_TEAM = 5RM3B24YU6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -462,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.aliarda.Mobil-Ajanda";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuumamobile.MobilAjanda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -492,6 +520,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DEB40C102C3C117D00DD2DF4 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DEB40C112C3C117D00DD2DF4 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEB40C102C3C117D00DD2DF4 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01E99A482C37D7080090C398 /* Project object */;
 }
