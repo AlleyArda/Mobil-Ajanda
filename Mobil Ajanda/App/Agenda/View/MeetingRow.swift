@@ -1,18 +1,16 @@
-//
-//  MeetingRow.swift
-//  Mobil Ajanda
-//
-//  Created by Arda Kulaksız on 8.07.2024.
-//
-
 import SwiftUI
 
 struct MeetingRow: View {
+    var meeting: Meeting
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text(meeting.title)
+                .font(.headline)
+            Text(meeting.location)
+                .font(.subheadline)
+            Text("\(meeting.date, formatter: dateFormatter)")
+                .font(.subheadline)
+        }
     }
-}
-
-#Preview {
-    MeetingRow()
 }

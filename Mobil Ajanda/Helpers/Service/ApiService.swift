@@ -1,3 +1,4 @@
+// App/Helpers/Service/ApiService.swift
 import Foundation
 
 class AuthService {
@@ -10,21 +11,29 @@ class AuthService {
     }
     
     private func loadUsers() {
-        if let url = Bundle.main.url(forResource: "users", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let usersData = try decoder.decode([String: [User]].self, from: data)
-                if let users = usersData["users"] {
-                    self.users = users
-                }
-            } catch {
-                print("Error loading users: \(error)")
+        // `mockUsersJSON` değişkeninden kullanıcı verilerini yüklüyoruz
+        let data = Data(mockUsersJSON.utf8)
+        let decoder = JSONDecoder()
+        
+        do {
+            let usersData = try decoder.decode([String: [User]].self, from: data)
+            if let users = usersData["users"] {
+                self.users = users
+                print("Users loaded: \(users)")
             }
+        } catch {
+            print("Error loading users: \(error)")
         }
     }
     
     func authenticate(email: String, password: String) -> User? {
-        return users.first { $0.email == email && $0.password == password }
+        // Kullanıcıyı email ve şifreye göre doğruluyoruz
+        let user = users.first { $0.email == email && $0.password == password }
+        if let user = user {
+            print("Authentication successful for user: \(user)")
+        } else {
+            print("Authentication failed for email: \(email)")
+        }
+        return user
     }
 }

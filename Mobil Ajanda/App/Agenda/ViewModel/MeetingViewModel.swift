@@ -1,5 +1,7 @@
+// App/Agenda/ViewModel/MeetingViewModel.swift
 import Foundation
 import Combine
+
 
 class MeetingViewModel: ObservableObject {
     @Published var meetings: [Meeting] = []

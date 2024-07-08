@@ -1,18 +1,28 @@
-//
-//  MeetingDetailView.swift
-//  Mobil Ajanda
-//
-//  Created by Arda Kulaksız on 8.07.2024.
-//
-
 import SwiftUI
 
 struct MeetingDetailView: View {
+    var meeting: Meeting
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 20) {
+            Text(meeting.title)
+                .font(.largeTitle)
+            Text(meeting.location)
+                .font(.title)
+            Text("\(meeting.date, formatter: dateFormatter)")
+                .font(.title)
+            Text(meeting.notes ?? "")
+                .font(.body)
+            Spacer()
+        }
+        .padding()
+        .navigationTitle("Görüşme Detayı")
     }
 }
 
-#Preview {
-    MeetingDetailView()
-}
+let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .short
+    return formatter
+}()
