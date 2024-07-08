@@ -7,15 +7,15 @@ let mockUsersJSON = """
     {
       "id": "1",
       "name": "Ahmet Yılmaz",
-      "email": "M",
-      "password": "1",
+      "email": "ahmet.yilmaz@tedas.gov.tr",
+      "password": 123456,
       "role": "manager"
     },
     {
       "id": "2",
       "name": "Mehmet Kaya",
-      "email": "D",
-      "password": "1",
+      "email": "mehmet.kaya@tedas.gov.tr",
+      "password": 1,
       "role": "driver"
     },
     {
