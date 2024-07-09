@@ -1,5 +1,5 @@
 import Foundation
-
+//jul 9 15.06
 let mockMeetingsJSON = """
 {
   "meetings": [
@@ -24,3 +24,4 @@ let mockMeetingsJSON = """
   ]
 }
 """.data(using: .utf8)
+

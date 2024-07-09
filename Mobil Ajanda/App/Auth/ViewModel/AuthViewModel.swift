@@ -1,6 +1,6 @@
 import Foundation
 import Observation
-
+//jul 9 15.06
 @Observable
 class AuthViewModel {
     var email: String = ""

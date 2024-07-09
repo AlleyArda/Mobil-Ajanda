@@ -1,5 +1,5 @@
 import SwiftUI
-
+//jul 9 15.06
 struct SecureFieldView: View {
     @Binding var password: String
     var placeHolder: String

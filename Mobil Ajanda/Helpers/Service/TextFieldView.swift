@@ -1,5 +1,5 @@
 import SwiftUI
-
+//jul 9 15.06
 struct TextFieldView: View {
     @Binding var text: String
     var placeHolder: String

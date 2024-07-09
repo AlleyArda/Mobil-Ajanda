@@ -1,6 +1,6 @@
 import SwiftUI
 import AlertToast
-
+//jul 9 15.06
 struct AuthView: View {
     @State var viewModel = AuthViewModel()
     @State private var showProgressView = false
