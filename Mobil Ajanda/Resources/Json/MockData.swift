@@ -1,4 +1,3 @@
-// App/Resources/Json/MockData.swift
 import Foundation
 
 let mockUsersJSON = """
@@ -6,16 +5,16 @@ let mockUsersJSON = """
   "users": [
     {
       "id": "1",
-      "name": "Ahmet Yılmaz",
-      "email": "ahmet.yilmaz@tedas.gov.tr",
-      "password": 123456,
+      "name": "Ali Arda Kulaksız",
+      "email": "arda.kulaksiz@tedas.gov.tr",
+      "password": "123456",
       "role": "manager"
     },
     {
       "id": "2",
       "name": "Mehmet Kaya",
       "email": "mehmet.kaya@tedas.gov.tr",
-      "password": 1,
+      "password": "1",
       "role": "driver"
     },
     {
@@ -27,4 +26,5 @@ let mockUsersJSON = """
     }
   ]
 }
-"""
+""".data(using: .utf8)!
+

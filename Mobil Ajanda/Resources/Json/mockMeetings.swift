@@ -1,4 +1,3 @@
-// App/Resources/Json/MockMeetings.swift
 import Foundation
 
 let mockMeetingsJSON = """
@@ -24,4 +23,4 @@ let mockMeetingsJSON = """
     }
   ]
 }
-"""
+""".data(using: .utf8)

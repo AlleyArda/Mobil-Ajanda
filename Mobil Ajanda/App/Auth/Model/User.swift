@@ -1,10 +1,4 @@
-struct User: Identifiable, Codable {
-    var id: Int
-    var name: String
-    var email: String
-    var password: String
-    var role: UserRole
-}
+import Foundation
 
 enum UserRole: String, Codable {
     case manager
@@ -12,3 +6,10 @@ enum UserRole: String, Codable {
     case securityChief
 }
 
+struct User: Codable, Identifiable {
+    let id: String
+    let name: String
+    let email: String
+    let password: String
+    let role: UserRole
+}

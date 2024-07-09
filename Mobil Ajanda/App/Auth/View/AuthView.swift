@@ -1,10 +1,3 @@
-//
-//  AuthView.swift
-//  Mobil Ajanda
-//
-//  Created by Fatih Durmaz on 8.07.2024.
-//
-
 import SwiftUI
 import AlertToast
 
@@ -14,64 +7,83 @@ struct AuthView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                ProgressView()
-                //Header
-                ZStack {
-                    HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", angle: 15, background: .blue)
-                }
+            
+            ZStack {
                 
-                // Login Form
-                Form {
-                    HStack {
-                        Image(systemName: "mail")
-                        TextField("E-Posta", text: $viewModel.email)
-                            .autocapitalization(.none)
-                    }
+                
+                VStack {
+                    //Header
+                    HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", background: .blue)
+                        .frame(height: UIScreen.main.bounds.height * 0.5)
                     
-                    HStack {
-                        Image(systemName: "lock")
-                        SecureFieldView(password: viewModel.password, placeHolder: "Şifre")
-
-                    }
-                    
-                    LoginButton(title: "Giriş Yap", background: .blue, action: {
-                        viewModel.login()
-                    })
-                    .padding()
-                }
-                .scrollContentBackground(.hidden)
-                .scrollDisabled(true)
-                .offset(y:-75)
-                
-                
-                
-                VStack{
-                    Text("TEDAŞ Bilgi Teknolojileri")
-                        .bold()
-                        .font(.title2)
-                    
-                    Button("Şifremi Unuttum"){
+                    // Login Form
+                    VStack {
+                        
+                        
+                        TextFieldView(text: $viewModel.email, placeHolder: "E-Posta", icon: Image(systemName: "mail"))
+                            .padding(.bottom, 10)
+                        
+                        
+                        SecureFieldView(password:$viewModel.password, placeHolder: "Şifre", icon: Image(systemName: "lock")
+                        )
+                        .padding(.bottom, 10)
+                        
+                        LoginButton(title: "Giriş Yap", background: .blue, action: {
+                            showProgressView = true
+                            Task{
+                                await viewModel.login()
+                                try await Task.sleep(nanoseconds: 1_000_000_000)
+                                showProgressView = false
+                            }
+                        })
+                        .frame(height: 50)
+                        
+                        
                         
                     }
-                    .font(.callout)
+                    .padding()
+                    .frame(height: UIScreen.main.bounds.height * 0.3)
+                    
+                    
+                    // Footer
+                    VStack{
+                        Divider()
+                        
+                        Text("TEDAŞ Bilgi Teknolojileri")
+                            .bold()
+                            .font(.title2)
+                        
+                        Button("Şifremi Unuttum"){
+                            
+                        }
+                        .font(.callout)
+                        
+                    }
+                    .frame(height: UIScreen.main.bounds.height * 0.2)
+                    
                     
                     
                 }
-                .offset(y:-50)
+                .ignoresSafeArea()
                 
+                if showProgressView {
+                    ProgressView() // İlerleme göstergesini göster
+                        .frame(width: 50, height: 50)
+                        .background(.gray.gradient)
+                        .clipShape(.circle)
+                        .shadow(radius: 10)
+                        .tint(.white)
+                    
+                    
+                }
                 
             }
-            .ignoresSafeArea()
             
-            if showProgressView {
-                ProgressView() // İlerleme göstergesini göster
-            }
+            
         }
         .toast(isPresenting: $viewModel.showError) {
-            AlertToast(displayMode:.alert, type: .error(.orange), title: "Uyarı", subTitle: viewModel.errorMessage)
+            AlertToast(displayMode:.alert, type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
         }
-        
     }
 }
 
