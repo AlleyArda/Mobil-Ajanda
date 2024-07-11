@@ -1,9 +1,4 @@
-//
-//  LoginButton.swift
-//  Mobil Ajanda
-//
-//  Created by Fatih Durmaz on 8.07.2024.
-//
+
 
 import SwiftUI
 //jul 9 15.06

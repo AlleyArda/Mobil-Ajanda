@@ -1,88 +1,81 @@
 import SwiftUI
 import AlertToast
-//jul 9 15.06
+
 struct AuthView: View {
     @State var viewModel = AuthViewModel()
     @State private var showProgressView = false
+    @State private var navigateToRootView = false
     
     var body: some View {
         NavigationStack {
-            
             ZStack {
-                
-                
                 VStack {
-                    //Header
+                    // Header
                     HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", background: .blue)
                         .frame(height: UIScreen.main.bounds.height * 0.5)
                     
                     // Login Form
                     VStack {
-                        
-                        
                         TextFieldView(text: $viewModel.email, placeHolder: "E-Posta", icon: Image(systemName: "mail"))
                             .padding(.bottom, 10)
                         
+                        SecureFieldView(password: $viewModel.password, placeHolder: "Şifre", icon: Image(systemName: "lock"))
+                            .padding(.bottom, 10)
                         
-                        SecureFieldView(password:$viewModel.password, placeHolder: "Şifre", icon: Image(systemName: "lock")
-                        )
-                        .padding(.bottom, 10)
-                        
-                        LoginButton(title: "Giriş Yap", background: .blue, action: {
+                        Button(action: {
                             showProgressView = true
-                            Task{
+                            Task {
                                 await viewModel.login()
-                                try await Task.sleep(nanoseconds: 1_000_000_000)
+                                try await Task.sleep(nanoseconds: 1_000_000_000) // 1 saniye bekle
                                 showProgressView = false
+                                if viewModel.isAuthenticated {
+                                    navigateToRootView = true
+                                }
                             }
-                        })
-                        .frame(height: 50)
-                        
-                        
-                        
+                        }) {
+                            Text("Giriş Yap")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 50)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        .padding()
                     }
                     .padding()
                     .frame(height: UIScreen.main.bounds.height * 0.3)
                     
-                    
                     // Footer
-                    VStack{
+                    VStack {
                         Divider()
                         
                         Text("TEDAŞ Bilgi Teknolojileri")
                             .bold()
                             .font(.title2)
                         
-                        Button("Şifremi Unuttum"){
+                        Button("Şifremi Unuttum") {
                             
                         }
                         .font(.callout)
-                        
                     }
                     .frame(height: UIScreen.main.bounds.height * 0.2)
-                    
-                    
-                    
                 }
                 .ignoresSafeArea()
                 
                 if showProgressView {
-                    ProgressView() // İlerleme göstergesini göster
+                    ProgressView()
                         .frame(width: 50, height: 50)
-                        .background(.gray.gradient)
-                        .clipShape(.circle)
+                        .background(Color.gray.opacity(0.7))
+                        .clipShape(Circle())
                         .shadow(radius: 10)
-                        .tint(.white)
-                    
-                    
                 }
-                
             }
-            
-            
+            .navigationDestination(isPresented: $navigateToRootView) {
+                RootView(viewmodel: viewModel)
+            }
         }
         .toast(isPresenting: $viewModel.showError) {
-            AlertToast(displayMode:.alert, type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+            AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
         }
     }
 }

@@ -1,24 +1,24 @@
 import Foundation
 import Observation
-//jul 9 15.06
+
 @Observable
 class AuthViewModel {
-    var email: String = ""
-    var password: String = ""
+    var email: String = "arda.kulaksiz@tedas.gov.tr"
+    var password: String = "123456"
     var errorMessage: String = ""
     var showError: Bool = false
     var isAuthenticated: Bool = false
     var fullname: String = ""
-    
+    var currentUser: User?
+    var currentRole: UserRole?
     
     private var users: [User] = []
-    
-    init()  {
+
+    init() {
         loadUsers()
     }
     
-    
-    private func loadUsers()  {
+    private func loadUsers() {
         do {
             let userData = try JSONDecoder().decode([String: [User]].self, from: mockUsersJSON)
             if let users = userData["users"] {
@@ -31,28 +31,25 @@ class AuthViewModel {
     
     func login() async {
         print(email)
-
+        
         guard validate() else {
             return
         }
         
         do {
-            print(email)
-            
-            if var user = users.first(where: { $0.email == email && $0.password == password }) {
+            if let user = users.first(where: { $0.email == email && $0.password == password }) {
+                currentUser = user
+                currentRole = user.role
                 isAuthenticated = true
-                fullname = user.name
                 print("Login başarılı")
             } else {
                 throw AuthError.invalidCredentials
             }
         } catch {
             errorMessage = error.localizedDescription
-            print(error.localizedDescription)
             showError = true
         }
     }
-    
     
     enum AuthError: LocalizedError {
         case invalidCredentials
@@ -84,7 +81,11 @@ class AuthViewModel {
         return true
     }
     
-    private func logout() {
-        // Buraya Logout işlemi için gerekli kodları yazacaksın.
+    func logout() async {
+        isAuthenticated = false
+        currentUser = nil
+        currentRole = nil
+        email = ""
+        password = ""
     }
 }

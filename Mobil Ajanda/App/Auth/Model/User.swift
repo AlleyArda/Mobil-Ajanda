@@ -14,3 +14,5 @@ struct User: Codable, Identifiable {
     let password: String
     let role: UserRole
 }
+
+
