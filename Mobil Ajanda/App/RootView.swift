@@ -1,5 +1,10 @@
 import SwiftUI
-
+/*
+ 
+ ManagerView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+ 
+ 
+ */
 struct RootView: View {
     @State var viewmodel = AuthViewModel()
     
@@ -9,7 +14,13 @@ struct RootView: View {
                 if viewmodel.isAuthenticated {
                     switch viewmodel.currentRole {
                     case .manager, .driver, .securityChief:
-                        ManagerView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+                        TabView {
+                            ManagerView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+                                .tabItem { Label("Bugün" , systemImage: "calendar" )}
+                            EmptyView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+                                .tabItem { Label("Diğer Toplantılar" , systemImage: "ellipsis") }
+                        }//tabView
+                        .navigationBarBackButtonHidden(true)
                     case .none:
                         Text("Kullanıcı rolü belirlenemedi")
                     }

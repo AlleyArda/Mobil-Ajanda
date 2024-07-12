@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ExitButton: View {
+struct ProfileButton: View {
     
     let background: Color
     let action: () -> Void
@@ -20,7 +20,7 @@ struct ExitButton: View {
 }
 
 #Preview {
-    ExitButton(background: .red) {
+    ProfileButton(background: .red) {
         print("Çıkış yapıldı")
     }
 }

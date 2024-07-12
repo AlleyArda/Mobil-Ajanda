@@ -88,4 +88,7 @@ class AuthViewModel {
         email = ""
         password = ""
     }
+
+    
 }
+

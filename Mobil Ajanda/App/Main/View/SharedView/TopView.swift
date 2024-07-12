@@ -35,10 +35,14 @@ struct TopView: View {
                     .padding(.bottom)
                 }//V
                 
+                Spacer()
+                
                 Text(title)
                     .bold()
                 
-                ExitButton(background: .red) {
+                Spacer()
+                
+                ProfileButton(background: .red) {
                     Task {
                         await viewmodel.logout()
                     }
@@ -53,14 +57,10 @@ struct TopView: View {
         .frame(height: 150)
     }
     
-    // Gün bilgisini almak için yardımcı fonksiyon
-    func currentDay() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d" // Sadece gün
-        return formatter.string(from: Date())
-    }
+   
+    
 }
 
 #Preview {
-    TopView(title: "TOPLANTILARIM", background: .blue)
+    TopView(title: "Tüm Toplantılar", background: .blue)
 }

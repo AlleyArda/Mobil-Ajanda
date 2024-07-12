@@ -55,4 +55,42 @@ class MeetingViewModel {
             }
         }
     
+    
+  
+    
+}
+
+
+func sectionHeader(for day: String) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    
+    if let date = formatter.date(from: day), Calendar.current.isDateInToday(date) {
+        return "BUGÜN"
+    } else {
+        return day
+    }
+}
+
+
+extension DateFormatter {
+    static let shortDateAndTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
+}
+
+extension MeetingViewModel {
+    func todayMeetings() -> [Meeting] {
+        let today = Calendar.current.startOfDay(for: Date())
+        return meetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
+    }
+}
+
+func currentDay() -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d" // Sadece gün
+    return formatter.string(from: Date())
 }
