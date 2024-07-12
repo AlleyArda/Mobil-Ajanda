@@ -1,6 +1,6 @@
 import SwiftUI
 import AlertToast
-
+//12 jul
 struct TodayView: View {
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel

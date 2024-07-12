@@ -1,7 +1,7 @@
 import SwiftUI
 import PagerTabStripView
 import MapKit
-
+//12 Jul
 struct MeetingDetailView: View {
     var meeting: Meeting
     

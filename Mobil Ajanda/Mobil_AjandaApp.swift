@@ -1,5 +1,5 @@
 // App/ContentView.swift
-//jul 9 15.06
+//jul 12
 import SwiftUI
 
 @main
@@ -11,7 +11,7 @@ struct MobilAjandaApp: App {
 //        UINavigationBar.appearance().standardAppearance = navBarAppearance // normal durumda nav bar stilinin davranışı
 //        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance // scroll edilince nav bar stilinin davranışı
         
-        // fatih
+    
     }
     var body: some Scene {
         WindowGroup {
