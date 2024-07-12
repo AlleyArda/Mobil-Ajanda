@@ -17,7 +17,7 @@ let mockMeetingsJSON = """
       "id": "2",
       "title": "Müşteri Toplantısı",
       "location": "Dış Lokasyon",
-      "date": "2024-07-08T11:00:00Z",
+      "date": "2024-07-12T11:00:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Müşteriyle proje görüşmesi"
@@ -26,8 +26,8 @@ let mockMeetingsJSON = """
       "id": "3",
       "title": "Proje Planlama",
       "location": "Merkez Ofis",
-      "date": "2024-07-09T10:00:00Z",
-      "managerId": "4",
+      "date": "2024-07-12T10:00:00Z",
+      "managerId": "1",
       "driverId": "5",
       "notes": "Yeni proje planlama toplantısı"
     },
@@ -35,7 +35,7 @@ let mockMeetingsJSON = """
       "id": "4",
       "title": "Güvenlik Eğitimi",
       "location": "Eğitim Salonu",
-      "date": "2024-07-10T13:00:00Z",
+      "date": "2024-07-12T13:00:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Güvenlik personeli eğitimi"
@@ -44,8 +44,8 @@ let mockMeetingsJSON = """
       "id": "5",
       "title": "Yıllık Değerlendirme",
       "location": "Toplantı Odası 2",
-      "date": "2024-07-11T15:00:00Z",
-      "managerId": "7",
+      "date": "2024-07-12T15:00:00Z",
+      "managerId": "1",
       "driverId": "8",
       "notes": "Yılın değerlendirilmesi"
     },
@@ -54,7 +54,7 @@ let mockMeetingsJSON = """
       "title": "Strateji Toplantısı",
       "location": "Merkez Ofis",
       "date": "2024-07-12T09:00:00Z",
-      "managerId": "10",
+      "managerId": "1",
       "driverId": "2",
       "notes": "Şirket stratejisi belirleme"
     },
@@ -62,7 +62,7 @@ let mockMeetingsJSON = """
       "id": "7",
       "title": "Tedarikçi Görüşmesi",
       "location": "Dış Lokasyon",
-      "date": "2024-07-13T11:00:00Z",
+      "date": "2024-07-12T11:00:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Yeni tedarikçi görüşmesi"
@@ -72,7 +72,7 @@ let mockMeetingsJSON = """
       "title": "Takım Toplantısı",
       "location": "Merkez Ofis",
       "date": "2024-07-14T10:00:00Z",
-      "managerId": "4",
+      "managerId": "1",
       "driverId": "5",
       "notes": "Takım üyeleriyle aylık toplantı"
     },

@@ -55,8 +55,6 @@ struct OtherView: View {
                         .padding()
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .edgesIgnoringSafeArea(.top)
             .onAppear {
                 Task {
                     await meetingViewModel.filterMeetings()

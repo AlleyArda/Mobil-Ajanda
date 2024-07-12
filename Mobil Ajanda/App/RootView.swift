@@ -9,26 +9,27 @@ struct RootView: View {
     @State var viewmodel = AuthViewModel()
     
     var body: some View {
-        NavigationStack {
             VStack {
                 if viewmodel.isAuthenticated {
                     switch viewmodel.currentRole {
                     case .manager, .driver, .securityChief:
-                        TabView {
+                        TabView() {
                             TodayView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
                                 .tabItem { Label("Bugün" , systemImage: "calendar" )}
+                            
                             OtherView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
-                                .tabItem { Label("Diğer Toplantılar" , systemImage: "ellipsis") }
+                                .tabItem { Label("Program" , systemImage: "magnifyingglass") }
+                            
                         }//tabView
-                        .navigationBarBackButtonHidden(true)
                     case .none:
                         Text("Kullanıcı rolü belirlenemedi")
                     }
                 } else {
                     AuthView(viewModel: viewmodel)
                 }
-            }
-        }
+            }    
+            .tint(.black)
+
     }
 }
 

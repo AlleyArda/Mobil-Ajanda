@@ -25,12 +25,11 @@ struct AuthView: View {
                         Button(action: {
                             showProgressView = true
                             Task {
-                                await viewModel.login()
                                 try await Task.sleep(nanoseconds: 1_000_000_000) // 1 saniye bekle
                                 showProgressView = false
-                                if viewModel.isAuthenticated {
-                                    navigateToRootView = true
-                                }
+
+                                await viewModel.login()
+
                             }
                         }) {
                             Text("Giriş Yap")
@@ -69,9 +68,6 @@ struct AuthView: View {
                         .clipShape(Circle())
                         .shadow(radius: 10)
                 }
-            }
-            .navigationDestination(isPresented: $navigateToRootView) {
-                RootView(viewmodel: viewModel)
             }
         }
         .toast(isPresenting: $viewModel.showError) {

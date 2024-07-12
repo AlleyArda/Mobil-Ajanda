@@ -6,40 +6,60 @@ struct TodayView: View {
     @State var authViewModel: AuthViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                TopView(title: "Toplantılar", subtitle: "BUGÜN" , background: .blue)
+                // TopView(title: "Toplantılar", subtitle: "BUGÜN" , background: .blue)
                 if authViewModel.currentUser != nil {
-                    List {
-                        ForEach(meetingViewModel.todayMeetings(), id: \.id) { meeting in
+                    List(meetingViewModel.todayMeetings()) {  meeting in
+                        VStack(alignment: .leading) {
                             NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
-                                VStack(alignment: .leading, spacing: 10) {
+                                
+                                
+                                
+                                VStack (alignment: .leading){
                                     Text(meeting.title)
                                         .font(.headline)
                                         .foregroundColor(.primary)
-                                    Text(meeting.location)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                    Text(DateFormatter.shortDateAndTime.string(from: meeting.date))
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
+                                    
+                                    
                                     Text(meeting.notes)
                                         .font(.body)
                                         .foregroundColor(.primary)
-                                    Text("Yönetici ID: \(meeting.managerId)")
-                                        .font(.body)
-                                        .foregroundColor(.primary)
+                                    
+                                    
+                                    HStack {
+                                        
+                                        HStack {
+                                            Image(systemName: "map")
+                                            Text(meeting.location)
+                                                .font(.footnote)
+                                                .bold()
+                                        }
+                                        Spacer()
+                                        Divider()
+                                        Spacer()
+                                        
+                                        HStack {
+                                            Image(systemName: "calendar")
+                                            
+                                            Text(meeting.date.formatted())
+                                                .font(.footnote)
+                                                .italic()
+                                        }
+                                        
+                                        
+                                    }
                                 }
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(.systemBackground))
-                                .cornerRadius(10)
-                                .shadow(radius: 2)
-                                .padding(.vertical, 5)
+                                .padding(8)
+                                
                             }
+                            .padding(8)
+                            .background(.gray.opacity(0.1))
+                            .cornerRadius(10)
+                            
                         }
                     }
-                    .listStyle(PlainListStyle())
+                    .listStyle(.plain)
                     .toast(isPresenting: $meetingViewModel.showError) {
                         AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
                     }
@@ -51,14 +71,25 @@ struct TodayView: View {
                         .padding()
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .edgesIgnoringSafeArea(.top)
             .onAppear {
                 Task {
                     await meetingViewModel.filterMeetings()
                 }
             }
+            .navigationTitle("Günün Programı")
+            .toolbar {
+                ToolbarItem {
+                    Button("Profil", systemImage: "person") {
+                        print("")
+                        
+                    }
+                    .buttonStyle(.plain)
+                    //.tint(.blue)
+                }
+            }
+
         }
+        
     }
 }
 
@@ -66,4 +97,5 @@ struct TodayView: View {
     let authViewModel = AuthViewModel()
     authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager) // Test amacıyla currentUser'ı ayarla
     return TodayView(meetingViewModel: MeetingViewModel(viewModel: authViewModel), authViewModel: authViewModel)
+    
 }

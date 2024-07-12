@@ -1,22 +1,42 @@
 import SwiftUI
+import PagerTabStripView
+import MapKit
 
 struct MeetingDetailView: View {
     var meeting: Meeting
     
     var body: some View {
-        TabView {
-            DetailsView(meeting: meeting)
-                .tabItem {
-                    Label("Details", systemImage: "info.circle")
-                }
-
-            MapView(meeting: meeting)
-                .tabItem {
-                    Label("Map", systemImage: "map")
-                }
+        VStack {
+            
+            PagerTabStripView() {
+                DetailsView(meeting: meeting)
+                    .pagerTabItem(tag: 1) {
+                        PageItem(title: "Detaylar")
+                    }
+                MapView(meeting: meeting)
+                    .pagerTabItem(tag: 2) {
+                        PageItem(title: "Harita")
+                    }
+                
+            }
+            
         }
+        .toolbar(.hidden, for: .tabBar)
+
     }
 }
+
+struct PageItem: View {
+    let title: String
+    
+    var body: some View {
+        VStack {
+            Text(title)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
 
 struct DetailsView: View {
     var meeting: Meeting
@@ -48,10 +68,9 @@ struct MapView: View {
     var meeting: Meeting
     
     var body: some View {
-        Text("Map for \(meeting.location)")
-            .font(.title)
-            .foregroundColor(.gray)
-            .navigationTitle("Meeting Location")
+        VStack {
+            Map()
+        }
     }
 }
 
