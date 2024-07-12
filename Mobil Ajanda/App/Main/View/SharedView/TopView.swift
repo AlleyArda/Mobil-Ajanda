@@ -3,6 +3,7 @@ import SwiftUI
 struct TopView: View {
     @State var viewmodel = AuthViewModel()
     var title: String = ""
+    var subtitle: String = ""
     var background: Color
     
     var body: some View {
@@ -37,8 +38,17 @@ struct TopView: View {
                 
                 Spacer()
                 
-                Text(title)
-                    .bold()
+                VStack {
+                    Text(title)
+                        .bold()
+                        .font(.headline)
+                    .frame(width: 150)
+                    
+                    Text(subtitle)
+                        .bold()
+                        .font(.footnote)
+                        .frame(width: 150)
+                }
                 
                 Spacer()
                 
@@ -62,5 +72,11 @@ struct TopView: View {
 }
 
 #Preview {
-    TopView(title: "Tüm Toplantılar", background: .blue)
-}
+    
+        Group{
+            TopView(title: "Toplantılar", subtitle: "BUGÜN" , background: .blue)
+            Spacer()
+            TopView(title: "Toplantılar", subtitle: "TÜM" ,background: .blue)
+        }
+    }
+    

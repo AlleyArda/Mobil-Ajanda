@@ -15,9 +15,9 @@ struct RootView: View {
                     switch viewmodel.currentRole {
                     case .manager, .driver, .securityChief:
                         TabView {
-                            ManagerView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+                            TodayView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
                                 .tabItem { Label("Bugün" , systemImage: "calendar" )}
-                            EmptyView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+                            OtherView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
                                 .tabItem { Label("Diğer Toplantılar" , systemImage: "ellipsis") }
                         }//tabView
                         .navigationBarBackButtonHidden(true)
