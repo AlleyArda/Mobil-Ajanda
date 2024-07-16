@@ -1,10 +1,19 @@
 import SwiftUI
 import AlertToast
-//12 jul
+
 struct AuthView: View {
     @State var viewModel = AuthViewModel()
     @State private var showProgressView = false
     @State private var navigateToRootView = false
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case email
+        case password
+    }
+    
+    
+    
     
     var body: some View {
         NavigationStack {
@@ -18,19 +27,58 @@ struct AuthView: View {
                     VStack {
                         TextFieldView(text: $viewModel.email, placeHolder: "E-Posta", icon: Image(systemName: "mail"))
                             .padding(.bottom, 10)
+                            .focused($focusedField, equals: .email)
+                            .submitLabel(.next)
+                            .toolbar {
+                                
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    if focusedField == .email {
+                                        Button("Done") {
+                                            focusedField = nil
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Button(action: { focusedField = .password }, label: {
+                                            Image(systemName: "chevron.down")
+                                        })
+                                        .padding()
+                                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                            Image(systemName: "chevron.up")
+                                        })
+                                    }
+                                    
+                                }
+                            }
                         
                         SecureFieldView(password: $viewModel.password, placeHolder: "Şifre", icon: Image(systemName: "lock"))
                             .padding(.bottom, 10)
+                            .focused($focusedField, equals: .password)
+                            .submitLabel(.done)
+                            .toolbar {
+                                
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    if focusedField == .password {
+                                        Button("Done") {
+                                            focusedField = nil
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Button(action: {}, label: {
+                                            Image(systemName: "chevron.down")
+                                        })
+                                        .padding()
+                                        Button(action: { focusedField = .email}, label: {
+                                            Image(systemName: "chevron.up")
+                                        })
+                                    }
+                                    
+                                }
+                            }
                         
                         Button(action: {
-                            showProgressView = true
-                            Task {
-                                try await Task.sleep(nanoseconds: 1_000_000_000) // 1 saniye bekle
-                                showProgressView = false
-
-                                await viewModel.login()
-
-                            }
+                            login()
                         }) {
                             Text("Giriş Yap")
                                 .frame(maxWidth: .infinity)
@@ -53,7 +101,7 @@ struct AuthView: View {
                             .font(.title2)
                         
                         Button("Şifremi Unuttum") {
-                            
+                            // Handle forgot password action
                         }
                         .font(.callout)
                     }
@@ -72,6 +120,18 @@ struct AuthView: View {
         }
         .toast(isPresenting: $viewModel.showError) {
             AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+        }
+        .onAppear {
+            focusedField = .email
+        }
+    }
+    
+    private func login() {
+        showProgressView = true
+        Task {
+            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second delay
+            showProgressView = false
+            await viewModel.login()
         }
     }
 }

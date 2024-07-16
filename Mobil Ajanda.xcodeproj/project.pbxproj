@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		010757B52C3E774D00E6EF28 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010757B42C3E774D00E6EF28 /* ProfileButton.swift */; };
 		010757B72C3EB95B00E6EF28 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010757B62C3EB95B00E6EF28 /* TodayView.swift */; };
-		010757BA2C3EBA9E00E6EF28 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010757B92C3EBA9E00E6EF28 /* TopView.swift */; };
 		010757BC2C3EC3E800E6EF28 /* MeetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010757BB2C3EC3E800E6EF28 /* MeetingViewModel.swift */; };
 		010757BE2C3EC46700E6EF28 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010757BD2C3EC46700E6EF28 /* Meeting.swift */; };
 		011F8E4D2C3BC2FA003AED23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F8E4C2C3BC2FA003AED23 /* User.swift */; };
@@ -36,9 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		010757B42C3E774D00E6EF28 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		010757B62C3EB95B00E6EF28 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
-		010757B92C3EBA9E00E6EF28 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		010757BB2C3EC3E800E6EF28 /* MeetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingViewModel.swift; sourceTree = "<group>"; };
 		010757BD2C3EC46700E6EF28 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		011F8E4C2C3BC2FA003AED23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -116,8 +112,6 @@
 		010757B82C3EB9D400E6EF28 /* SharedView */ = {
 			isa = PBXGroup;
 			children = (
-				010757B42C3E774D00E6EF28 /* ProfileButton.swift */,
-				010757B92C3EBA9E00E6EF28 /* TopView.swift */,
 				016E7E592C43478E00DE2F71 /* CardView.swift */,
 			);
 			path = SharedView;
@@ -337,14 +331,12 @@
 				012DAD812C413C6F003C4979 /* MeetingDetailView.swift in Sources */,
 				011F8E4F2C3BC311003AED23 /* AuthViewModel.swift in Sources */,
 				010757B72C3EB95B00E6EF28 /* TodayView.swift in Sources */,
-				010757BA2C3EBA9E00E6EF28 /* TopView.swift in Sources */,
 				01E99A722C37DE3B0090C398 /* ApiService.swift in Sources */,
 				010757BC2C3EC3E800E6EF28 /* MeetingViewModel.swift in Sources */,
 				011F8E632C3BCD12003AED23 /* MockData.swift in Sources */,
 				DEB40C142C3C1DE800DD2DF4 /* SecureFieldView.swift in Sources */,
 				DED7CDD62C3C0E32009660E9 /* HeaderView.swift in Sources */,
 				01E99A672C37D9D10090C398 /* Constants.swift in Sources */,
-				010757B52C3E774D00E6EF28 /* ProfileButton.swift in Sources */,
 				011F8E6F2C3BDD83003AED23 /* mockMeetings.swift in Sources */,
 				DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */,
 				012DAD7F2C411D06003C4979 /* Functions.swift in Sources */,
