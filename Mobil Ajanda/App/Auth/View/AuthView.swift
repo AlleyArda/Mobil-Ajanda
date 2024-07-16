@@ -6,7 +6,6 @@ struct AuthView: View {
     @State private var showProgressView = false
     @State private var navigateToRootView = false
     @FocusState private var focusedField: Field?
-    
     enum Field {
         case email
         case password
@@ -17,6 +16,7 @@ struct AuthView: View {
     
     var body: some View {
         NavigationStack {
+            
             ZStack {
                 VStack {
                     // Header
@@ -122,11 +122,12 @@ struct AuthView: View {
             AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
         }
         .onAppear {
-            focusedField = .email
+            focusedField = nil
         }
     }
     
     private func login() {
+        focusedField = nil
         showProgressView = true
         Task {
             try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second delay
