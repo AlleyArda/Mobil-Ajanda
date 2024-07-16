@@ -4,12 +4,14 @@ import Foundation
 
 struct Meeting: Codable, Identifiable {
     var id: String
-    var title: String
-    var location: String
-    var date: Date
-    var managerId: String
-    var driverId: String
-    var notes: String
+       var title: String
+       var location: String
+       var date: Date
+       var managerId: String
+       var driverId: String
+       var notes: String
+       var latitude: Double
+       var longitude: Double
     
 }
 

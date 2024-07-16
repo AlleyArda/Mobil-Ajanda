@@ -71,7 +71,7 @@ struct DetailsView: View {
                 }
                 .padding()
                 .background(Color(UIColor.systemGray6))
-            .cornerRadius(10)
+                .cornerRadius(10)
                 Spacer()
             }
             
@@ -88,8 +88,8 @@ struct DetailsView: View {
                     Spacer()
                     Text("BLANK")
                     /*Text(authViewModel.getUserName(id: meeting.managerId))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)*/
+                     .font(.subheadline)
+                     .foregroundColor(.secondary)*/
                     
                 }
                 
@@ -103,8 +103,8 @@ struct DetailsView: View {
                     Spacer()
                     Text("BLANK")
                     /* Text(authViewModel.getUserName(id: meeting.driverId))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary) */
+                     .font(.subheadline)
+                     .foregroundColor(.secondary) */
                     
                 }
             }
@@ -121,13 +121,35 @@ struct DetailsView: View {
 
 
 
+
 struct MapView: View {
     var meeting: Meeting
     
+    @State private var region: MKCoordinateRegion
+    
+    init(meeting: Meeting) {
+        self.meeting = meeting
+        _region = State(initialValue: MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: meeting.latitude, longitude: meeting.longitude),
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        ))
+    }
+    
     var body: some View {
-        VStack {
-            Map()
+        Map() {
+            Annotation("\(meeting.location)", coordinate: CLLocationCoordinate2D(latitude: meeting.latitude, longitude: meeting.longitude)){
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.gray.gradient)
+                    Image("tedas-logo")
+                        .resizable()
+                        .frame(width: 50 ,  height: 50)
+                        .padding(5)
+                }
+            }
         }
+        .mapControlVisibility(.visible)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -137,11 +159,11 @@ struct MapView: View {
     RootView()
 }
 /* struct DetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let authViewModel = AuthViewModel()
-        let meeting = Meeting(id: "1", title: "Project Meeting", location: "Discuss project scope", date: Date(), managerId: "1", driverId: "manager1", notes: "driver1")
-        DetailsView(meeting: meeting, authViewModel: authViewModel)
-    }
-}
-
-*/
+ static var previews: some View {
+ let authViewModel = AuthViewModel()
+ let meeting = Meeting(id: "1", title: "Project Meeting", location: "Discuss project scope", date: Date(), managerId: "1", driverId: "manager1", notes: "driver1")
+ DetailsView(meeting: meeting, authViewModel: authViewModel)
+ }
+ }
+ 
+ */
