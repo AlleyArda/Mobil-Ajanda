@@ -88,7 +88,15 @@ class AuthViewModel {
         email = ""
         password = ""
     }
-
+    
+    func getUserName(id : String) -> String {
+        loadUsers()
+        let user = users.first(where:{$0.id == id})
+        
+        return user!.name
+    }
+    
+    
     
 }
 

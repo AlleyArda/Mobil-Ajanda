@@ -19,6 +19,7 @@
 		012DAD7F2C411D06003C4979 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012DAD7E2C411D06003C4979 /* Functions.swift */; };
 		012DAD812C413C6F003C4979 /* MeetingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012DAD802C413C6F003C4979 /* MeetingDetailView.swift */; };
 		012DAD832C413D26003C4979 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012DAD822C413D26003C4979 /* OtherView.swift */; };
+		016E7E5A2C43478E00DE2F71 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016E7E592C43478E00DE2F71 /* CardView.swift */; };
 		01BAF6B92C3C2742003127D2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAF6B82C3C2742003127D2 /* TextFieldView.swift */; };
 		01E99A542C37D7080090C398 /* Mobil_AjandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */; };
 		01E99A582C37D7090090C398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E99A572C37D7090090C398 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		012DAD7E2C411D06003C4979 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		012DAD802C413C6F003C4979 /* MeetingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDetailView.swift; sourceTree = "<group>"; };
 		012DAD822C413D26003C4979 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
+		016E7E592C43478E00DE2F71 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		01BAF6B82C3C2742003127D2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextFieldView.swift; path = "Mobil Ajanda/Helpers/Service/TextFieldView.swift"; sourceTree = SOURCE_ROOT; };
 		01E99A502C37D7080090C398 /* Mobil Ajanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobil Ajanda.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E99A532C37D7080090C398 /* Mobil_AjandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobil_AjandaApp.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				010757B42C3E774D00E6EF28 /* ProfileButton.swift */,
 				010757B92C3EBA9E00E6EF28 /* TopView.swift */,
+				016E7E592C43478E00DE2F71 /* CardView.swift */,
 			);
 			path = SharedView;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */,
 				012DAD7F2C411D06003C4979 /* Functions.swift in Sources */,
 				012DAD832C413D26003C4979 /* OtherView.swift in Sources */,
+				016E7E5A2C43478E00DE2F71 /* CardView.swift in Sources */,
 				011F8E4D2C3BC2FA003AED23 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,19 +47,19 @@ class MeetingViewModel {
     }
     
     func groupedMeetingsByDay() -> [String: [Meeting]] {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            
-            return Dictionary(grouping: meetings) { meeting in
-                formatter.string(from: meeting.date)
-            }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return Dictionary(grouping: meetings) { meeting in
+            formatter.string(from: meeting.date)
         }
+    }
     
-    
-  
-    
+    func todayMeetings() -> [Meeting] {
+        let today = Calendar.current.startOfDay(for: Date())
+        return meetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
+    }
 }
-
 
 func sectionHeader(for day: String) -> String {
     let formatter = DateFormatter()
@@ -72,7 +72,6 @@ func sectionHeader(for day: String) -> String {
     }
 }
 
-
 extension DateFormatter {
     static let shortDateAndTime: DateFormatter = {
         let formatter = DateFormatter()
@@ -82,15 +81,9 @@ extension DateFormatter {
     }()
 }
 
-extension MeetingViewModel {
-    func todayMeetings() -> [Meeting] {
-        let today = Calendar.current.startOfDay(for: Date())
-        return meetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
-    }
-}
-
 func currentDay() -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "d" // Sadece gün
     return formatter.string(from: Date())
 }
+

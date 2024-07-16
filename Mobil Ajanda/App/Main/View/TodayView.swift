@@ -1,6 +1,6 @@
 import SwiftUI
 import AlertToast
-//12 jul
+
 struct TodayView: View {
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel
@@ -8,62 +8,12 @@ struct TodayView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                // TopView(title: "Toplantılar", subtitle: "BUGÜN" , background: .blue)
                 if authViewModel.currentUser != nil {
-                    List(meetingViewModel.todayMeetings()) {  meeting in
-                        VStack(alignment: .leading) {
-                            NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
-                                
-                                
-                                
-                                VStack (alignment: .leading){
-                                    Text(meeting.title)
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                    
-                                    
-                                    Text(meeting.notes)
-                                        .font(.body)
-                                        .foregroundColor(.primary)
-                                    
-                                    
-                                    HStack {
-                                        
-                                        HStack {
-                                            Image(systemName: "map")
-                                            Text(meeting.location)
-                                                .font(.footnote)
-                                                .bold()
-                                        }
-                                        Spacer()
-                                        Divider()
-                                        Spacer()
-                                        
-                                        HStack {
-                                            Image(systemName: "calendar")
-                                            
-                                            Text(meeting.date.formatted())
-                                                .font(.footnote)
-                                                .italic()
-                                        }
-                                        
-                                        
-                                    }
-                                }
-                                .padding(8)
-                                
-                            }
-                            .padding(8)
-                            .background(.gray.opacity(0.1))
-                            .cornerRadius(10)
-                            
+                    todayMeetingsListView
+                        .listStyle(.plain)
+                        .toast(isPresenting: $meetingViewModel.showError) {
+                            AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
                         }
-                    }
-                    .listStyle(.plain)
-                    .toast(isPresenting: $meetingViewModel.showError) {
-                        AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
-                    }
-                    
                 } else {
                     Text("Kullanıcı bilgisi bulunamadı")
                         .font(.title)
@@ -78,24 +28,56 @@ struct TodayView: View {
             }
             .navigationTitle("Günün Programı")
             .toolbar {
-                ToolbarItem {
-                    Button("Profil", systemImage: "person") {
-                        print("")
-                        
-                    }
-                    .buttonStyle(.plain)
-                    //.tint(.blue)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    profileMenu
                 }
+                
+                
             }
-
         }
-        
+    }
+
+    private var todayMeetingsListView: some View {
+        List(meetingViewModel.todayMeetings()) { meeting in
+            NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
+                CardView(meeting: meeting)
+                
+                    .padding(8)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+            }
+        }
+    }
+
+    private var profileMenu: some View {
+        Menu {
+            Button(action: {
+                // Action for settings
+                print("Settings tapped")
+            }) {
+                Label("Settings", systemImage: "gear")
+            }
+            
+            Button(action: {
+                Task {
+                    await authViewModel.logout()
+                }
+            }) {
+                Label("Logout", systemImage: "arrow.right.circle")
+            }
+        } label: {
+            Image(systemName: "person.crop.circle")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .padding()
+        }
     }
 }
 
-#Preview {
-    let authViewModel = AuthViewModel()
-    authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager) // Test amacıyla currentUser'ı ayarla
-    return TodayView(meetingViewModel: MeetingViewModel(viewModel: authViewModel), authViewModel: authViewModel)
-    
+struct TodayView_Previews: PreviewProvider {
+    static var previews: some View {
+        let authViewModel = AuthViewModel()
+        authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager)
+        return TodayView(meetingViewModel: MeetingViewModel(viewModel: authViewModel), authViewModel: authViewModel)
+    }
 }

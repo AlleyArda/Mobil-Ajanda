@@ -28,8 +28,7 @@ struct RootView: View {
                     AuthView(viewModel: viewmodel)
                 }
             }    
-            .tint(.black)
-
+            //.tint(.black)
     }
 }
 
