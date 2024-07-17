@@ -4,7 +4,7 @@ import AlertToast
 struct TodayView: View {
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel
-    
+    @State var navigateToSettings = false
     var body: some View {
         NavigationStack {
             VStack {
@@ -34,6 +34,9 @@ struct TodayView: View {
                 
                 
             }
+            NavigationLink(destination: SettingsView(), isActive: $navigateToSettings) {
+                            EmptyView()
+                        }
         }
     }
 
@@ -52,7 +55,7 @@ struct TodayView: View {
     private var profileMenu: some View {
         Menu {
             Button(action: {
-                // Action for settings
+                navigateToSettings = true
                 print("Settings tapped")
             }) {
                 Label("Settings", systemImage: "gear")

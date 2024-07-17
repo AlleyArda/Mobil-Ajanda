@@ -73,7 +73,7 @@ let mockMeetingsJSON = """
       "id": "7",
       "title": "Tedarikçi Görüşmesi",
       "location": "Dış Lokasyon",
-      "date": "2024-07-15T11:00:00Z",
+      "date": "2024-07-17T11:00:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Yeni tedarikçi görüşmesi",

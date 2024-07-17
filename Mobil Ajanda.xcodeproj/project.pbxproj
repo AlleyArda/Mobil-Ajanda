@@ -25,6 +25,8 @@
 		01E99A672C37D9D10090C398 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A662C37D9D10090C398 /* Constants.swift */; };
 		01E99A692C37DA0B0090C398 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A682C37DA0B0090C398 /* RootView.swift */; };
 		01E99A722C37DE3B0090C398 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E99A712C37DE3B0090C398 /* ApiService.swift */; };
+		01EF66952C46AC1F002BFEC8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF66942C46AC1F002BFEC8 /* SettingsView.swift */; };
+		01EF66982C46ACA7002BFEC8 /* Setting in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF66972C46ACA7002BFEC8 /* Setting */; };
 		DEB40C0D2C3C100900DD2DF4 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */; };
 		DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */; };
 		DEB40C122C3C117D00DD2DF4 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DEB40C112C3C117D00DD2DF4 /* AlertToast */; };
@@ -53,6 +55,7 @@
 		01E99A662C37D9D10090C398 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01E99A682C37DA0B0090C398 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		01E99A712C37DE3B0090C398 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		01EF66942C46AC1F002BFEC8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EF66982C46ACA7002BFEC8 /* Setting in Frameworks */,
 				DEE9759F2C4155E500331761 /* PagerTabStripView in Frameworks */,
 				DEB40C122C3C117D00DD2DF4 /* AlertToast in Frameworks */,
 			);
@@ -113,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				016E7E592C43478E00DE2F71 /* CardView.swift */,
+				01EF66942C46AC1F002BFEC8 /* SettingsView.swift */,
 			);
 			path = SharedView;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			packageProductDependencies = (
 				DEB40C112C3C117D00DD2DF4 /* AlertToast */,
 				DEE9759E2C4155E500331761 /* PagerTabStripView */,
+				01EF66972C46ACA7002BFEC8 /* Setting */,
 			);
 			productName = "Mobil Ajanda";
 			productReference = 01E99A502C37D7080090C398 /* Mobil Ajanda.app */;
@@ -296,6 +302,7 @@
 			packageReferences = (
 				DEB40C102C3C117D00DD2DF4 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				DEE9759D2C4155E500331761 /* XCRemoteSwiftPackageReference "PagerTabStripView" */,
+				01EF66962C46ACA7002BFEC8 /* XCRemoteSwiftPackageReference "Setting" */,
 			);
 			productRefGroup = 01E99A512C37D7080090C398 /* Products */;
 			projectDirPath = "";
@@ -341,6 +348,7 @@
 				DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */,
 				012DAD7F2C411D06003C4979 /* Functions.swift in Sources */,
 				012DAD832C413D26003C4979 /* OtherView.swift in Sources */,
+				01EF66952C46AC1F002BFEC8 /* SettingsView.swift in Sources */,
 				016E7E5A2C43478E00DE2F71 /* CardView.swift in Sources */,
 				011F8E4D2C3BC2FA003AED23 /* User.swift in Sources */,
 			);
@@ -550,6 +558,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		01EF66962C46ACA7002BFEC8 /* XCRemoteSwiftPackageReference "Setting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/Setting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		DEB40C102C3C117D00DD2DF4 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -569,6 +585,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		01EF66972C46ACA7002BFEC8 /* Setting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01EF66962C46ACA7002BFEC8 /* XCRemoteSwiftPackageReference "Setting" */;
+			productName = Setting;
+		};
 		DEB40C112C3C117D00DD2DF4 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DEB40C102C3C117D00DD2DF4 /* XCRemoteSwiftPackageReference "AlertToast" */;

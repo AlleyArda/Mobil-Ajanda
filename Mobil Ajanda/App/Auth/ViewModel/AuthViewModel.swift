@@ -11,7 +11,6 @@ class AuthViewModel {
     var fullname: String = ""
     var currentUser: User?
     var currentRole: UserRole?
-    
     private var users: [User] = []
 
     init() {

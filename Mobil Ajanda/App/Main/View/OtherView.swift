@@ -4,7 +4,7 @@ import AlertToast
 struct OtherView: View {
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel
-    
+    @State var navigateToSettings = false
     var body: some View {
         NavigationView {
             VStack {
@@ -32,6 +32,9 @@ struct OtherView: View {
                     profileMenu
                 }
             }
+            NavigationLink(destination: SettingsView(), isActive: $navigateToSettings) {
+                            EmptyView()
+                        }
         }
     }
 
@@ -63,11 +66,11 @@ struct OtherView: View {
     private func meetings(for day: String) -> [Meeting] {
         meetingViewModel.groupedMeetingsByDay()[day] ?? []
     }
-
+    
     private var profileMenu: some View {
         Menu {
             Button(action: {
-                // Action for settings
+                navigateToSettings = true
                 print("Settings tapped")
             }) {
                 Label("Settings", systemImage: "gear")

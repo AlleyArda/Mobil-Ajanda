@@ -1,5 +1,5 @@
 {
-  "originHash" : "04bc3053b41dc99eb1c96f7bb7a8afa965ef7f0fa0fc292b1e53f8f4a2df9bf4",
+  "originHash" : "d7d59e09ace654560b004c35e5cddc5b30f6d5ffd69a6d1bfde92a69304279cd",
   "pins" : [
     {
       "identity" : "alerttoast",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "39ec00d2577adf75d82d1c7023c56950b96d2298",
         "version" : "4.0.0"
+      }
+    },
+    {
+      "identity" : "setting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/Setting.git",
+      "state" : {
+        "revision" : "f506b13b2024fc3e7585b6e4f8290f6f1525127c",
+        "version" : "1.0.1"
       }
     }
   ],

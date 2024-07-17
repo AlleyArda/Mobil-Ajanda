@@ -6,6 +6,8 @@ struct AuthView: View {
     @State private var showProgressView = false
     @State private var navigateToRootView = false
     @FocusState private var focusedField: Field?
+    @AppStorage("isOn") var isOn = false
+    
     enum Field {
         case email
         case password
@@ -77,17 +79,23 @@ struct AuthView: View {
                                 }
                             }
                         
-                        Button(action: {
-                            login()
-                        }) {
-                            Text("Giriş Yap")
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 50)
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
+                        HStack {
+                            Button(action: {
+                                login()
+                            }) {
+                                Text("Giriş Yap")
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 50)
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
                         .padding()
+                                Toggle(
+                                    "Beni Hatırla",
+                                    systemImage: isOn ? "checkmark.square.fill" : "checkmark.square",
+                                    isOn: $isOn).toggleStyle(.button)
+                        }//HStack
                     }
                     .padding()
                     .frame(height: UIScreen.main.bounds.height * 0.3)
