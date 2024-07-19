@@ -4,7 +4,8 @@ import SwiftUI
 struct SettingsView: View {
     /// Setting supports `@State`, `@AppStorage`, `@Published`, and more!
     @AppStorage("isOn") var isOn = false
-
+    // 
+    @State private var cookie = UserDefaults.standard.integer(forKey: "cookie")
     var body: some View {
         /// Start things off with `SettingStack`.
         SettingStack {
@@ -14,6 +15,8 @@ struct SettingsView: View {
                 SettingGroup(header: "Main Group") {
                     /// Use any of the pre-made components...
                     SettingToggle(title: "Beni Hatırla!", isOn: $isOn)
+                    
+                    //UserDefaults.standard.setValue(cookie, forKey: "cookie")
 
                     /// ...or define your own ones!
                     SettingCustomView {

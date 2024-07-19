@@ -1,6 +1,5 @@
 import Foundation
 import Observation
-
 @Observable
 class AuthViewModel {
     var email: String = "arda.kulaksiz@tedas.gov.tr"
@@ -12,7 +11,7 @@ class AuthViewModel {
     var currentUser: User?
     var currentRole: UserRole?
     private var users: [User] = []
-
+    
     init() {
         loadUsers()
     }

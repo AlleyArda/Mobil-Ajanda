@@ -5,9 +5,11 @@ import SwiftUI
  
  
  */
+
+
 struct RootView: View {
     @State var viewmodel = AuthViewModel()
-    
+    @AppStorage("isOn") var isOn = false
     var body: some View {
             VStack {
                 if viewmodel.isAuthenticated {
