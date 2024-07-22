@@ -1,18 +1,25 @@
 import Foundation
 import Observation
+import MapKit
 
 @Observable
 class MeetingViewModel {
     var errorMessage: String = ""
     var showError: Bool = false
     var isAuthenticated: Bool = true
+    var searchQuery: String = "" {
+        didSet {
+            searchMeetings()
+        }
+    }
     var viewModel: AuthViewModel
     public var meetings: [Meeting] = []
+    public var filteredMeetings: [Meeting] = []
+    public var searchedMeetings: [Meeting] = []
 
     init(viewModel: AuthViewModel) {
         self.viewModel = viewModel
         loadMeetings()
-        
         Task {
             await filterMeetings()
         }
@@ -31,6 +38,8 @@ class MeetingViewModel {
                         meetings[index].driverName = viewModel.getUserName(id: meetings[index].driverId)
                     }
                     self.meetings = meetings
+                    self.filteredMeetings = meetings
+                    self.searchedMeetings = meetings
                 }
             }
         } catch {
@@ -43,11 +52,20 @@ class MeetingViewModel {
         
         switch user.role {
         case .manager:
-            meetings = meetings.filter { $0.managerId == user.id }
+            filteredMeetings = meetings.filter { $0.managerId == user.id }
         case .driver:
-            meetings = meetings.filter { $0.driverId == user.id }
+            filteredMeetings = meetings.filter { $0.driverId == user.id }
         case .securityChief:
-            print("full access -> no filter meetings")
+            filteredMeetings = meetings // full access, no filtering
+        }
+        searchMeetings()
+    }
+    
+    private func searchMeetings() {
+        if searchQuery.isEmpty {
+            searchedMeetings = filteredMeetings
+        } else {
+            searchedMeetings = filteredMeetings.filter { $0.title.lowercased().contains(searchQuery.lowercased()) }
         }
     }
     
@@ -55,14 +73,14 @@ class MeetingViewModel {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
-        return Dictionary(grouping: meetings) { meeting in
+        return Dictionary(grouping: searchedMeetings) { meeting in
             formatter.string(from: meeting.date)
         }
     }
     
     func todayMeetings() -> [Meeting] {
         let today = Calendar.current.startOfDay(for: Date())
-        return meetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
+        return searchedMeetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
     }
 }
 
@@ -91,4 +109,3 @@ func currentDay() -> String {
     formatter.dateFormat = "d" // Sadece gün
     return formatter.string(from: Date())
 }
-

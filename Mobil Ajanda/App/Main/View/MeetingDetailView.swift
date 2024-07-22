@@ -134,20 +134,23 @@ struct DetailsView: View {
 
 struct MapView: View {
     var meeting: Meeting
-    
+    @State private var searchText = ""
+    @State private var cameraPosition: MapCameraPosition = .region(.userRegion)
+    var userLocation : CLLocationCoordinate2D{
+        .init(latitude: meeting.latitude, longitude: meeting.longitude)
+    }
     @State private var region: MKCoordinateRegion
-    
     init(meeting: Meeting) {
         self.meeting = meeting
         _region = State(initialValue: MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: meeting.latitude, longitude: meeting.longitude),
-            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         ))
     }
     
     var body: some View {
         Map() {
-            Annotation("\(meeting.location)", coordinate: CLLocationCoordinate2D(latitude: meeting.latitude, longitude: meeting.longitude)){
+            Annotation("\(meeting.location)", coordinate: userLocation){
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(Color.gray.gradient)
@@ -158,10 +161,41 @@ struct MapView: View {
                 }
             }
         }
+        .overlay(alignment: .top){
+            TextField("Arama yap", text: $searchText)
+                .font(.subheadline)
+                .padding(12)
+                .background(.white)
+                .padding()
+                .shadow(radius: 10)
+        }.onSubmit (of: .text) {
+            print("search for locations with query \(searchText)")
+        }
+        .mapControls{
+            MapCompass()
+            MapPitchToggle()
+            MapUserLocationButton()
+        }
         .mapControlVisibility(.visible)
         .edgesIgnoringSafeArea(.all)
     }
+    
+    
+    
 }
+
+extension CLLocationCoordinate2D{
+    static var userLocation: CLLocationCoordinate2D{
+        return .init()
+    }
+}
+
+extension MKCoordinateRegion{
+    static var userRegion: MKCoordinateRegion{
+        return .init(center: .userLocation, latitudinalMeters: 10000, longitudinalMeters: 10000)
+    }
+}
+
 
 
 
@@ -169,6 +203,6 @@ struct Detail_Previews: PreviewProvider {
     static var previews: some View {
         let authViewModel = AuthViewModel()
         authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager)
-        return MeetingDetailView(meeting: Meeting(id: "1", title: "deneme", location: "123", date: Date(), managerId: "123", driverId: "123", notes: "123", latitude: 123.32, longitude: 123.23 , managerName: "arda" , driverName: "hakan"))
+        return MeetingDetailView(meeting: Meeting(id: "1", title: "deneme", location: "123", date: Date(), managerId: "123", driverId: "123", notes: "123", latitude: 25.7602, longitude: -80.1959 , managerName: "arda" , driverName: "hakan"))
     }
 }

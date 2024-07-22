@@ -5,6 +5,7 @@ struct OtherView: View {
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel
     @State var navigateToSettings = false
+    @State var searchText = ""
     var body: some View {
         NavigationView {
             ZStack {
@@ -13,6 +14,12 @@ struct OtherView: View {
                         meetingsListView
                             .listStyle(.plain)
                             .bold()
+                            .searchable(text: $searchText)
+                            .onChange(of: searchText){
+                                newValue in
+                                meetingViewModel.searchQuery = newValue
+                            }
+                            //searchable
                             .toast(isPresenting: $meetingViewModel.showError) {
                                 AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
                             }
@@ -66,8 +73,8 @@ struct OtherView: View {
                         .background(Color.blue.gradient.opacity(2))
                         .cornerRadius(10)
                         
-                }
-            }
+                }.listSectionSeparator(.hidden)
+            }.listRowSeparator(.hidden)
         }
     }
 

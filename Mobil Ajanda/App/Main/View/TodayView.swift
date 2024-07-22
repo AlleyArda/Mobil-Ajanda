@@ -50,8 +50,8 @@ struct TodayView: View {
                     .padding(8)
                     .background(Color.blue.gradient.opacity(2))
                     .cornerRadius(10)
-            }
-        }
+            }.listRowSeparator(.hidden)
+        }.listRowSeparator(.hidden)
     }
 
     private var profileMenu: some View {
