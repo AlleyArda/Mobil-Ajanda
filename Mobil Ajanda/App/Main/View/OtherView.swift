@@ -65,10 +65,10 @@ struct OtherView: View {
             ForEach(meetings(for: day)) { meeting in
                 NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                     CardView(meeting: meeting)
-                        .background(Color.white.gradient.opacity(0.75))
+                        .background(Color.blue.gradient.opacity(0.4))
                         .cornerRadius(7)
                         .padding(8)
-                        .background(Color.blue.gradient.opacity(2))
+                        .background(Color.blue.gradient.opacity(0.3))
                         .cornerRadius(10)
                         
                 }.listSectionSeparator(.hidden)

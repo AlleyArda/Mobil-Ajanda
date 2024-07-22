@@ -43,10 +43,10 @@ struct TodayView: View {
         List(meetingViewModel.todayMeetings()) { meeting in
             NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                 CardView(meeting: meeting)
-                    .background(Color.white.gradient.opacity(0.75))
+                    .background(Color.blue.gradient.opacity(0.8))
                     .cornerRadius(7)
                     .padding(8)
-                    .background(Color.blue.gradient.opacity(2))
+                    .background(Color.blue.gradient.opacity(0.3))
                     .cornerRadius(10)
             }.listRowSeparator(.hidden)
         }.listRowSeparator(.hidden)
