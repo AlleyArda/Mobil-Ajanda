@@ -34,9 +34,7 @@ struct TodayView: View {
                 
                 
             }
-            NavigationLink(destination: SettingsView(), isActive: $navigateToSettings) {
-                            EmptyView()
-                        }
+           
         }
         
     }
@@ -57,18 +55,11 @@ struct TodayView: View {
     private var profileMenu: some View {
         Menu {
             Button(action: {
-                navigateToSettings = true
-                print("Settings tapped")
-            }) {
-                Label("Settings", systemImage: "gear")
-            }
-            
-            Button(action: {
                 Task {
                     await authViewModel.logout()
                 }
             }) {
-                Label("Logout", systemImage: "arrow.right.circle")
+                Label("Çıkış", systemImage: "arrow.right.circle")
             }
         } label: {
             Image(systemName: "person.crop.circle")

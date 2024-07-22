@@ -38,6 +38,7 @@ class AuthViewModel {
             if let user = users.first(where: { $0.email == email && $0.password == password }) {
                 currentUser = user
                 currentRole = user.role
+                fullname = user.name
                 isAuthenticated = true
                 print("Login başarılı")
             } else {

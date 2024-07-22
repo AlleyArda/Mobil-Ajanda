@@ -126,7 +126,7 @@ struct DetailsView: View {
             
         }//V outter
         .padding()
-        .navigationTitle("Meeting Details")
+        .navigationTitle("Toplantı Ayrıntıları")
     }
 }
 
