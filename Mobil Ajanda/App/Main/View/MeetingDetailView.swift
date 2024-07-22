@@ -1,6 +1,7 @@
 import SwiftUI
 import PagerTabStripView
 import MapKit
+import CoreLocation
 //12 Jul
 struct MeetingDetailView: View {
     var meeting: Meeting
@@ -135,7 +136,8 @@ struct DetailsView: View {
 struct MapView: View {
     var meeting: Meeting
     @State private var searchText = ""
-    @State private var cameraPosition: MapCameraPosition = .region(.userRegion)
+    /*@State private var cameraPosition: MapCameraPosition = .region(.userRegion)*/
+    
     var userLocation : CLLocationCoordinate2D{
         .init(latitude: meeting.latitude, longitude: meeting.longitude)
     }
@@ -161,13 +163,14 @@ struct MapView: View {
                 }
             }
         }
-        .overlay(alignment: .top){
+        .overlay(alignment: .topLeading){
             TextField("Arama yap", text: $searchText)
                 .font(.subheadline)
                 .padding(12)
-                .background(.white)
+                .background(.white.gradient.opacity(0.4))
                 .padding()
                 .shadow(radius: 10)
+                .frame(maxWidth: UIScreen.main.bounds.width * 0.8)
         }.onSubmit (of: .text) {
             print("search for locations with query \(searchText)")
         }
@@ -184,17 +187,7 @@ struct MapView: View {
     
 }
 
-extension CLLocationCoordinate2D{
-    static var userLocation: CLLocationCoordinate2D{
-        return .init()
-    }
-}
 
-extension MKCoordinateRegion{
-    static var userRegion: MKCoordinateRegion{
-        return .init(center: .userLocation, latitudinalMeters: 10000, longitudinalMeters: 10000)
-    }
-}
 
 
 
