@@ -7,35 +7,40 @@ struct OtherView: View {
     @State var navigateToSettings = false
     var body: some View {
         NavigationView {
-            VStack {
-                if authViewModel.currentUser != nil {
-                    meetingsListView
-                        .listStyle(.plain)
-                        .toast(isPresenting: $meetingViewModel.showError) {
-                            AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
-                        }
-                } else {
-                    Text("Kullanıcı bilgisi bulunamadı")
-                        .font(.title)
-                        .foregroundColor(.red)
-                        .padding()
+            ZStack {
+                VStack {
+                    if authViewModel.currentUser != nil {
+                        meetingsListView
+                            .listStyle(.plain)
+                            .bold()
+                            .toast(isPresenting: $meetingViewModel.showError) {
+                                AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
+                            }
+                    } else {
+                        Text("Kullanıcı bilgisi bulunamadı")
+                            .font(.title)
+                            .foregroundColor(.red)
+                            .padding()
+                    }
                 }
+                .onAppear {
+                    Task {
+                        await meetingViewModel.filterMeetings()
+                    }
+                }
+                .navigationTitle(Text("Tüm Toplantılar"))
+                
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        profileMenu
+                    }
             }
-            .onAppear {
-                Task {
-                    await meetingViewModel.filterMeetings()
-                }
-            }
-            .navigationTitle("Tüm Toplantılar")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    profileMenu
-                }
             }
             NavigationLink(destination: SettingsView(), isActive: $navigateToSettings) {
                             EmptyView()
                         }
-        }
+        }//navView
+        
     }
 
     private var meetingsListView: some View {
@@ -55,9 +60,12 @@ struct OtherView: View {
             ForEach(meetings(for: day)) { meeting in
                 NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                     CardView(meeting: meeting)
+                        .background(Color.white.gradient.opacity(0.75))
+                        .cornerRadius(7)
                         .padding(8)
-                        .background(Color.gray.opacity(0.1))
+                        .background(Color.blue.gradient.opacity(2))
                         .cornerRadius(10)
+                        
                 }
             }
         }

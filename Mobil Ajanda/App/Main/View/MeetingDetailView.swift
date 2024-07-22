@@ -4,7 +4,6 @@ import MapKit
 //12 Jul
 struct MeetingDetailView: View {
     var meeting: Meeting
-    
     var body: some View {
         VStack {
             
@@ -69,8 +68,13 @@ struct DetailsView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .padding()
-                .background(Color(UIColor.systemGray6))
+                .background(Color.white.gradient.opacity(0.75))
+                .cornerRadius(7)
+                .padding(8)
+                .background(Color.blue.gradient.opacity(2))
+                .cornerRadius(10)
                 .cornerRadius(10)
                 Spacer()
             }
@@ -86,10 +90,10 @@ struct DetailsView: View {
                         .font(.subheadline)
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("BLANK")
-                    /*Text(authViewModel.getUserName(id: meeting.managerId))
-                     .font(.subheadline)
-                     .foregroundColor(.secondary)*/
+                    
+                    Text(meeting.managerName ?? "error")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     
                 }
                 
@@ -101,19 +105,25 @@ struct DetailsView: View {
                         .font(.subheadline)
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("BLANK")
-                    /* Text(authViewModel.getUserName(id: meeting.driverId))
-                     .font(.subheadline)
-                     .foregroundColor(.secondary) */
+                    
+                    Text(meeting.driverName ?? "error")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     
                 }
             }
-            .padding()
-            .background(Color(UIColor.systemGray6))
+            .padding(10)
+            .background(Color.white.gradient.opacity(0.75))
+            .cornerRadius(7)
+            .padding(5)
+            .background(Color.blue.gradient.opacity(2))
             .cornerRadius(10)
             
             Spacer()
-        }
+            
+            //buraya not kısmı gelebilir
+            
+        }//V outter
         .padding()
         .navigationTitle("Meeting Details")
     }
@@ -155,15 +165,10 @@ struct MapView: View {
 
 
 
-#Preview{
-    RootView()
+struct Detail_Previews: PreviewProvider {
+    static var previews: some View {
+        let authViewModel = AuthViewModel()
+        authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager)
+        return MeetingDetailView(meeting: Meeting(id: "1", title: "deneme", location: "123", date: Date(), managerId: "123", driverId: "123", notes: "123", latitude: 123.32, longitude: 123.23 , managerName: "arda" , driverName: "hakan"))
+    }
 }
-/* struct DetailsView_Previews: PreviewProvider {
- static var previews: some View {
- let authViewModel = AuthViewModel()
- let meeting = Meeting(id: "1", title: "Project Meeting", location: "Discuss project scope", date: Date(), managerId: "1", driverId: "manager1", notes: "driver1")
- DetailsView(meeting: meeting, authViewModel: authViewModel)
- }
- }
- 
- */

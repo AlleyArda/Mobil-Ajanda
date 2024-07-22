@@ -24,7 +24,12 @@ class MeetingViewModel {
         do {
             if let mockMeetingsJSON = mockMeetingsJSON {
                 let meetingData = try decoder.decode([String: [Meeting]].self, from: mockMeetingsJSON)
-                if let meetings = meetingData["meetings"] {
+                if var meetings = meetingData["meetings"] {
+                    // Meeting içindeki managerName ve driverName değerlerini ayarlayalım
+                    for index in meetings.indices {
+                        meetings[index].managerName = viewModel.getUserName(id: meetings[index].managerId)
+                        meetings[index].driverName = viewModel.getUserName(id: meetings[index].driverId)
+                    }
                     self.meetings = meetings
                 }
             }

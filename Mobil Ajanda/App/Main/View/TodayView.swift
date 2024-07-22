@@ -38,15 +38,17 @@ struct TodayView: View {
                             EmptyView()
                         }
         }
+        
     }
 
     private var todayMeetingsListView: some View {
         List(meetingViewModel.todayMeetings()) { meeting in
             NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                 CardView(meeting: meeting)
-                
+                    .background(Color.white.gradient.opacity(0.75))
+                    .cornerRadius(7)
                     .padding(8)
-                    .background(Color.gray.opacity(0.1))
+                    .background(Color.blue.gradient.opacity(2))
                     .cornerRadius(10)
             }
         }
