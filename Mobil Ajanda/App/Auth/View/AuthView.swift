@@ -7,7 +7,7 @@ struct AuthView: View {
     @State private var navigateToRootView = false
     @FocusState private var focusedField: Field?
     @AppStorage("isOn") var isOn = false
-    
+    @AppStorage("isOnHaptic") var isOnHaptic = true
     enum Field {
         case email
         case password

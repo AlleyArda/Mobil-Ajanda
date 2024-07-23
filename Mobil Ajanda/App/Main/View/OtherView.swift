@@ -6,6 +6,7 @@ struct OtherView: View {
     @State var authViewModel: AuthViewModel
     @State var navigateToSettings = false
     @State var searchText = ""
+    @AppStorage("isOnHaptic") var isOnHaptic = true
     var body: some View {
         NavigationView {
             ZStack {

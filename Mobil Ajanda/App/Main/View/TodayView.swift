@@ -5,6 +5,7 @@ struct TodayView: View {
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel
     @State var navigateToSettings = false
+    @AppStorage("isOnHaptic") var isOnHaptic = true
     var body: some View {
         NavigationStack {
             VStack {
@@ -43,7 +44,7 @@ struct TodayView: View {
         List(meetingViewModel.todayMeetings()) { meeting in
             NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                 CardView(meeting: meeting)
-                    .background(Color.blue.gradient.opacity(0.8))
+                    .background(Color.blue.gradient.opacity(0.4))
                     .cornerRadius(7)
                     .padding(8)
                     .background(Color.blue.gradient.opacity(0.3))

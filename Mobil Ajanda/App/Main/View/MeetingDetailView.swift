@@ -5,6 +5,7 @@ import CoreLocation
 //12 Jul
 struct MeetingDetailView: View {
     var meeting: Meeting
+    @AppStorage("isOnHaptic") var isOnHaptic = true
     var body: some View {
         VStack {
             
@@ -161,6 +162,9 @@ struct MapView: View {
                         .frame(width: 50 ,  height: 50)
                         .padding(5)
                 }
+                /*.onTapGesture {
+                    <#code#>
+                }*/
             }
         }
         .overlay(alignment: .topLeading){

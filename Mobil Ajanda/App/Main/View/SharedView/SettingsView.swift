@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingsView: View {
     /// Setting supports `@State`, `@AppStorage`, `@Published`, and more!
     @AppStorage("isOn") var isOn = false
+    @AppStorage("isOnHaptic") var isOnHaptic = true
     @State var authViewModel: AuthViewModel
     @State private var cookie = UserDefaults.standard.integer(forKey: "cookie")
     var body: some View {
@@ -12,23 +13,16 @@ struct SettingsView: View {
             /// This is the main settings page.
             SettingPage(title: "Ayarlar") {
                 SettingCustomView {
-                    Color.blue.opacity(0.5)
-                        .opacity(1)
-                        .cornerRadius(12)
-                        .padding(6)
-                        .overlay {
-                            Color.blue
-                                .opacity(0.1)
-                            .cornerRadius(12)
-                            Image("tedas-logo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                            
-                        }
-                        .frame(height: 150)
-                        .padding(.horizontal , 16)
-                        .shadow(radius: 10 , y: 10.4)
-                    
+                    HStack{
+                        Spacer()
+                        Image("tedas-logo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Spacer()
+                    }
+                    .frame(height: 150)
+                    .padding(.horizontal , 16)
+                    .shadow(radius: 10 , y: 10.4)
                     
                     Color.blue.opacity(0.5)
                         .opacity(1)
@@ -56,7 +50,7 @@ struct SettingsView: View {
                                             }
                                         }
                                         .padding(.trailing, 8)
-
+                                        
                                         VStack(alignment: .leading) {
                                             // Fullname
                                             SettingText(title: "\(authViewModel.fullname)", foregroundColor: .black)
@@ -79,19 +73,6 @@ struct SettingsView: View {
                                         }
                                         
                                         Spacer()
-
-                                        Button(action: {
-                                            Task {
-                                                await authViewModel.logout()
-                                            }
-                                        }) {
-                                            Label("Çıkış", systemImage: "arrow.right.circle")
-                                                .labelStyle(.iconOnly)
-                                                .font(.title)
-                                                .foregroundColor(.red)
-                                                .padding()
-                                        }
-                                        .buttonStyle(BorderlessButtonStyle())
                                     }
                                     .padding()
                                     
@@ -101,7 +82,7 @@ struct SettingsView: View {
                         }
                         .frame(height: 150)
                         .padding(.horizontal , 16)
-                        
+                    
                     
                     
                     
@@ -109,22 +90,23 @@ struct SettingsView: View {
                     
                 }//TEDAS LOGO
                 
-              
+                
                 
                 /// Use groups to group components together.
                 SettingGroup(header: "Profil") {
                     /// Use any of the pre-made components...
                     SettingToggle(title: "Beni Hatırla!", isOn: $isOn)
-                    
+                    SettingToggle(title: "Titreşim", isOn: $isOnHaptic)
+            
                     //UserDefaults.standard.setValue(cookie, forKey: "cookie")
-
+                    
                     /// ...or define your own ones!
                     
-
+                    
                     /// Nest `SettingPage` inside other `SettingPage`s!
                     SettingPage(title: "Gelişmiş Ayarlar") {
                         SettingText(title: "I show up on the next page!" , foregroundColor: .blue)
-                    }.previewIcon("gearshape")
+                    }.previewIcon("gearshape")//gelişmiş ayarlar
                     
                     SettingPage(title: "Kişisel Bilgiler") {
                         SettingGroup {
@@ -138,7 +120,15 @@ struct SettingsView: View {
                             SettingText(title: "Yetki Kodu: \(String(describing: authViewModel.currentRole))" , foregroundColor: .black)
                         }
                     }.previewIcon("person.bust")//kişisel bilgiler
-                }
+                    
+                    
+                    
+                    SettingButton(title: "çıkış"){
+                        Task{await authViewModel.logout()}
+                        
+                        
+                    }
+                }//Profil
             }
         }.navigationBarBackButtonHidden(true)
     }
