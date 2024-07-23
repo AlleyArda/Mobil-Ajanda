@@ -20,7 +20,7 @@ struct RootView: View {
                             .background(GeometryReader { _ in
                                 Color.clear.onAppear {
                                     if isOnHaptic {
-                                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                                     }
                                 }
                             })
@@ -33,7 +33,7 @@ struct RootView: View {
                             .background(GeometryReader { _ in
                                 Color.clear.onAppear {
                                     if isOnHaptic {
-                                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                                     }
                                 }
                             })
@@ -46,7 +46,7 @@ struct RootView: View {
                             .background(GeometryReader { _ in
                                 Color.clear.onAppear {
                                     if isOnHaptic {
-                                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                                     }
                                 }
                             })

@@ -7,7 +7,7 @@ struct AuthView: View {
     @State private var navigateToRootView = false
     @FocusState private var focusedField: Field?
     @AppStorage("isOn") var isOn = false
-    @AppStorage("isOnHaptic") var isOnHaptic = true
+    @AppStorage("isOnHaptic") var isOnHaptic = false
     enum Field {
         case email
         case password
@@ -81,6 +81,7 @@ struct AuthView: View {
                         
                         HStack {
                             Button(action: {
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 login()
                             }) {
                                 Text("Giriş Yap")
@@ -95,6 +96,9 @@ struct AuthView: View {
                                     "Beni Hatırla",
                                     systemImage: isOn ? "checkmark.square.fill" : "checkmark.square",
                                     isOn: $isOn).toggleStyle(.button)
+                                .onChange(of: isOn){
+                                    UISelectionFeedbackGenerator().selectionChanged()
+                                }
                         }//HStack
                     }
                     .padding()
