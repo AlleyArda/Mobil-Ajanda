@@ -24,14 +24,11 @@ struct SettingsView: View {
                     .padding(.horizontal , 16)
                     .shadow(radius: 10 , y: 10.4)
                     
-                    Color.blue.opacity(0.5)
-                        .opacity(1)
-                        .cornerRadius(12)
-                        .padding(6)
-                        .overlay {
+                   
                             Color.blue
                                 .opacity(0.1)
                                 .cornerRadius(12)
+                                .shadow(color: .gray.opacity(0.3), radius: 10, x: 0, y: 5)
                                 .overlay {
                                     HStack {
                                         Group {
@@ -51,37 +48,54 @@ struct SettingsView: View {
                                         }
                                         .padding(.trailing, 8)
                                         
-                                        VStack(alignment: .leading) {
+                                        VStack(alignment: .leading, spacing: -10) {
                                             // Fullname
                                             SettingText(title: "\(authViewModel.fullname)", foregroundColor: .black)
                                                 .font(.headline)
                                                 .bold()
-                                                .fontWeight(.medium)
+                                                
+                                                .fontWeight(.heavy)
+                                                
+                                            Divider()
+                                            
+                                            
                                             
                                             // Current Role
                                             switch authViewModel.currentRole {
                                             case .manager:
                                                 SettingText(title: "Makam", foregroundColor: .black)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.thin)
+                                                    .italic()
+                                                    .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
                                             case .driver:
                                                 SettingText(title: "Sürücü", foregroundColor: .black)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.regular)
+                                                    .italic()
+                                                    .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
                                             case .securityChief:
                                                 SettingText(title: "Güvenlik Şefi", foregroundColor: .black)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.regular)
+                                                    .italic()
+                                                    .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
                                             case .none:
                                                 Text("Error")
                                                     .foregroundColor(.red)
+                                                    .font(.subheadline)
+                                                    .fontWeight(.heavy)
                                             }
-                                        }
+                                        }//vstack
                                         
                                         Spacer()
-                                    }
+                                    }//stack
                                     .padding()
-                                    
+                                    .background(Color.white)
                                     .cornerRadius(12)
-                                    
-                                }//asdasdas
-                        }
-                        .frame(height: 150)
-                        .padding(.horizontal , 16)
+                                }
+                                .padding(.init(top: 60, leading: 10, bottom: 50, trailing: 10))
+                     
                     
                     
                     
@@ -123,7 +137,7 @@ struct SettingsView: View {
                     
                     
                     
-                    SettingButton(title: "çıkış"){
+                    SettingButton(title: "Çıkış"){
                         Task{await authViewModel.logout()}
                         
                         
@@ -134,6 +148,13 @@ struct SettingsView: View {
     }
 }
 
-#Preview {
-    SettingsView(isOn: false, authViewModel: AuthViewModel())
+struct SeetingsView_Preview: PreviewProvider{
+    static var previews: some View{
+        let authViewModel = AuthViewModel()
+        authViewModel.currentRole = .manager
+        authViewModel.fullname = "Ali Arda Kulaksız"
+        authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager)
+        return SettingsView(isOn: true,isOnHaptic: true, authViewModel: authViewModel)
+    }
 }
+
