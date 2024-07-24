@@ -2,6 +2,7 @@ import SwiftUI
 import AlertToast
 
 struct TodayView: View {
+    
     @State var meetingViewModel: MeetingViewModel
     @State var authViewModel: AuthViewModel
     @State var navigateToSettings = false
@@ -28,13 +29,12 @@ struct TodayView: View {
                 }
             }
             .navigationTitle("Günün Programı")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
                     profileMenu
                 }
-                
-                
             }
+            
            
         }
         

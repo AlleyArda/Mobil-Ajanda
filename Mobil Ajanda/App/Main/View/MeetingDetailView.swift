@@ -2,14 +2,13 @@ import SwiftUI
 import PagerTabStripView
 import MapKit
 import CoreLocation
-//12 Jul
+
 struct MeetingDetailView: View {
     var meeting: Meeting
     @AppStorage("isOnHaptic") var isOnHaptic = true
     var body: some View {
         VStack {
-            
-            PagerTabStripView() {
+            PagerTabStripView {
                 DetailsView(meeting: meeting)
                     .pagerTabItem(tag: 1) {
                         PageItem(title: "Detaylar")
@@ -18,12 +17,8 @@ struct MeetingDetailView: View {
                     .pagerTabItem(tag: 2) {
                         PageItem(title: "Harita")
                     }
-                
             }
-            
         }
-        //.toolbar(.hidden, for: .tabBar)
-        
     }
 }
 
@@ -38,14 +33,107 @@ struct PageItem: View {
     }
 }
 
-
 struct DetailsView: View {
     var meeting: Meeting
     @State var authViewModel = AuthViewModel()
     @State var meetingViewModel = MeetingViewModel(viewModel: AuthViewModel())
+    @AppStorage("notes") var notes : String = ""
+    @FocusState private var focusedField: Field?
+    enum Field {
+    case notes
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
+            
+            ZStack{
+                Color.gray.opacity(1)
+                    
+                Color.black.opacity(0.2)
+                    .padding(7)
+                    .cornerRadius(30)
+                Color.white.grayscale(50)
+                    .padding(11)
+                VStack(alignment: .leading , spacing: 1){
+                    
+                    Spacer(minLength: 20)
+                     HStack{
+                        Spacer()
+                        Text("Notlarım")
+                            .frame(width: .infinity)
+                            .font(.headline)
+                        Spacer()
+                    
+                    }//hstackfor Notlarım
+                    
+                    
+                    
+                    //buraya not tutma alanı gelicek
+                    TextEditor(text: $notes)
+                        .padding(2)
+                        
+                        .background(Color.gray.gradient.opacity(0.5))
+                                        .cornerRadius(10)
+                                        .frame(height: .infinity)
+                                        .shadow(radius: 5)
+                                        .padding(13)
+                                        .font(.headline)
+                                        .frame(height: .infinity)
+                                        .frame(minHeight: 200)
+                                        .frame(maxHeight: 210)
+                                        .focused($focusedField , equals: .notes)
+                                        .toolbar{
+                                            ToolbarItemGroup(placement: .keyboard){
+                                                Button("Bitti"){
+                                                    focusedField = nil
+                                                }
+                                                Spacer()
+                                            }
+                                        }
+                    
+                    
+                }
+            }.cornerRadius(10)
+            
+            Spacer()
+            
+            
+            Divider()
+            
+            VStack(alignment: .leading, spacing: 5) {
+                HStack {
+                    Image(systemName: "person.fill")
+                        .foregroundColor(.secondary)
+                    Text("Yönetici Adı:")
+                        .font(.subheadline)
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(meeting.managerName ?? "error")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                HStack {
+                    Image(systemName: "car.fill")
+                        .foregroundColor(.secondary)
+                    Text("Sürücü Adı:")
+                        .font(.subheadline)
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(meeting.driverName ?? "error")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(10)
+            .background(Color.white.gradient.opacity(0.75))
+            .cornerRadius(7)
+            .padding(5)
+            .background(Color.blue.gradient.opacity(2))
+            .cornerRadius(10)
+            
+            Divider()
+            
             HStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 5) {
@@ -70,7 +158,7 @@ struct DetailsView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.white.gradient.opacity(0.75))
                 .cornerRadius(7)
@@ -81,68 +169,23 @@ struct DetailsView: View {
                 Spacer()
             }
             
-            Divider()
-            
-            VStack(alignment: .leading, spacing: 5) {
-                HStack {
-                    
-                    Image(systemName: "person.fill")
-                        .foregroundColor(.secondary)
-                    Text("Yönetici Adı:")
-                        .font(.subheadline)
-                        .foregroundColor(.primary)
-                    Spacer()
-                    
-                    Text(meeting.managerName ?? "error")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                }
-                
-                HStack {
-                    
-                    Image(systemName: "car.fill")
-                        .foregroundColor(.secondary)
-                    Text("Sürücü Adı:")
-                        .font(.subheadline)
-                        .foregroundColor(.primary)
-                    Spacer()
-                    
-                    Text(meeting.driverName ?? "error")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                }
-            }
-            .padding(10)
-            .background(Color.white.gradient.opacity(0.75))
-            .cornerRadius(7)
-            .padding(5)
-            .background(Color.blue.gradient.opacity(2))
-            .cornerRadius(10)
+                        
             
             Spacer()
-            
-            //buraya not kısmı gelebilir
-            
-        }//V outter
+        }
         .padding()
-        .navigationTitle("Toplantı Ayrıntıları")
     }
 }
-
-
-
 
 struct MapView: View {
     var meeting: Meeting
     @State private var searchText = ""
-    /*@State private var cameraPosition: MapCameraPosition = .region(.userRegion)*/
     
-    var userLocation : CLLocationCoordinate2D{
+    var userLocation: CLLocationCoordinate2D {
         .init(latitude: meeting.latitude, longitude: meeting.longitude)
     }
     @State private var region: MKCoordinateRegion
+    
     init(meeting: Meeting) {
         self.meeting = meeting
         _region = State(initialValue: MKCoordinateRegion(
@@ -152,54 +195,55 @@ struct MapView: View {
     }
     
     var body: some View {
-        Map() {
-            Annotation("\(meeting.location)", coordinate: userLocation){
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.gray.gradient)
-                    Image("tedas-logo")
-                        .resizable()
-                        .frame(width: 50 ,  height: 50)
-                        .padding(5)
+        VStack {
+            Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, annotationItems: [meeting]) { _ in
+                MapAnnotation(coordinate: userLocation) {
+                    VStack {
+                        Image("tedas-logo")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .padding(5)
+                        ZStack{
+                            Color.green
+                                .cornerRadius(10)
+                                .frame(minWidth: 0)
+                            HStack {
+                                Text("Git")
+                                    .frame(minWidth: 0)
+                                    .foregroundColor(.white
+                                    )
+                                    .font(.headline)
+                                .bold()
+                                Image(systemName: "mappin").colorInvert()
+                                Image(systemName: "arrow.right").font(.footnote)
+                            }
+
+                        }
+                                            }
+                    .onTapGesture {
+                        openMapsAppWithDirections(to: userLocation, destinationName: meeting.location)
+                    }
                 }
-                /*.onTapGesture {
-                    <#code#>
-                }*/
             }
+            .edgesIgnoringSafeArea(.all)
         }
-        .overlay(alignment: .topLeading){
-            TextField("Arama yap", text: $searchText)
-                .font(.subheadline)
-                .padding(12)
-                .background(.white.gradient.opacity(0.4))
-                .padding()
-                .shadow(radius: 10)
-                .frame(maxWidth: UIScreen.main.bounds.width * 0.8)
-        }.onSubmit (of: .text) {
-            print("search for locations with query \(searchText)")
-        }
-        .mapControls{
-            MapCompass()
-            MapPitchToggle()
-            MapUserLocationButton()
-        }
-        .mapControlVisibility(.visible)
-        .edgesIgnoringSafeArea(.all)
     }
     
-    
-    
+    private func openMapsAppWithDirections(to coordinate: CLLocationCoordinate2D, destinationName: String) {
+        let placemark = MKPlacemark(coordinate: coordinate)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = destinationName
+        mapItem.openInMaps(launchOptions: [
+            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving
+        ])
+    }
 }
-
-
-
-
-
 
 struct Detail_Previews: PreviewProvider {
     static var previews: some View {
         let authViewModel = AuthViewModel()
         authViewModel.currentUser = User(id: "1", name: "Ali Arda Kulaksız", email: "arda.kulaksiz@tedas.gov.tr", password: "123456", role: .manager)
-        return MeetingDetailView(meeting: Meeting(id: "1", title: "deneme", location: "123", date: Date(), managerId: "123", driverId: "123", notes: "123", latitude: 25.7602, longitude: -80.1959 , managerName: "arda" , driverName: "hakan"))
+        return MeetingDetailView(meeting: Meeting(id: "1", title: "deneme", location: "123", date: Date(), managerId: "123", driverId: "123", notes: "123", latitude: 25.7602, longitude: -80.1959, managerName: "arda", driverName: "hakan"))
     }
 }
+ 

@@ -35,7 +35,7 @@ struct AuthView: View {
                                 
                                 ToolbarItemGroup(placement: .keyboard) {
                                     if focusedField == .email {
-                                        Button("Done") {
+                                        Button("Bitti") {
                                             focusedField = nil
                                         }
                                         
@@ -61,7 +61,7 @@ struct AuthView: View {
                                 
                                 ToolbarItemGroup(placement: .keyboard) {
                                     if focusedField == .password {
-                                        Button("Done") {
+                                        Button("Bitti") {
                                             focusedField = nil
                                         }
                                         
