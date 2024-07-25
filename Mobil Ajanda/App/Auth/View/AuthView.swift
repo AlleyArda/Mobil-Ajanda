@@ -22,7 +22,7 @@ struct AuthView: View {
             ZStack {
                 VStack {
                     // Header
-                    HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", background: .blue)
+                    HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", background: .blue.opacity(0.7))
                         .frame(height: UIScreen.main.bounds.height * 0.5)
                     
                     // Login Form
@@ -87,7 +87,7 @@ struct AuthView: View {
                                 Text("Giriş Yap")
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
-                                    .background(Color.blue)
+                                    .background(Color.blue.opacity(0.7))
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                             }
@@ -145,6 +145,7 @@ struct AuthView: View {
             try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second delay
             showProgressView = false
             await viewModel.login()
+            
         }
     }
 }

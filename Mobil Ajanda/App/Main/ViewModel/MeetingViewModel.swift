@@ -87,8 +87,8 @@ class MeetingViewModel {
     
     private func scheduleNotification(for meeting: Meeting) {
         let content = UNMutableNotificationContent()
-        content.title = "Meeting Reminder"
-        content.body = "Your meeting \(meeting.title) at \(meeting.location) is starting soon."
+        content.title = "\(meeting.title)"
+        content.body = " Toplantınız başladı!! \n Konum -> \(meeting.location)"
         content.sound = .default
         
         let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: meeting.date)

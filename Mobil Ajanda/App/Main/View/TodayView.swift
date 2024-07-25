@@ -7,6 +7,7 @@ struct TodayView: View {
     @State var authViewModel: AuthViewModel
     @State var navigateToSettings = false
     @AppStorage("isOnHaptic") var isOnHaptic = true
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -29,28 +30,27 @@ struct TodayView: View {
                 }
             }
             .navigationTitle("Günün Programı")
-            .toolbar{
-                ToolbarItem(placement: .navigationBarTrailing){
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     profileMenu
                 }
             }
-            
-           
         }
-        
     }
 
     private var todayMeetingsListView: some View {
         List(meetingViewModel.todayMeetings()) { meeting in
             NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                 CardView(meeting: meeting)
-                    .background(Color.blue.gradient.opacity(0.4))
+                    .background(Color.blue.opacity(0.1))
                     .cornerRadius(7)
                     .padding(8)
-                    .background(Color.blue.gradient.opacity(0.3))
+                    .background(Color.blue.opacity(0.05))
                     .cornerRadius(10)
-            }.listRowSeparator(.hidden)
-        }.listRowSeparator(.hidden)
+            }
+            .listRowSeparator(.hidden)
+        }
+        .listRowSeparator(.hidden)
     }
 
     private var profileMenu: some View {
@@ -70,6 +70,8 @@ struct TodayView: View {
         }
     }
 }
+
+
 
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {

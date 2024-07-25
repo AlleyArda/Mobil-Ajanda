@@ -7,6 +7,7 @@ struct OtherView: View {
     @State var navigateToSettings = false
     @State var searchText = ""
     @AppStorage("isOnHaptic") var isOnHaptic = true
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -16,11 +17,9 @@ struct OtherView: View {
                             .listStyle(.plain)
                             .bold()
                             .searchable(text: $searchText)
-                            .onChange(of: searchText){
-                                newValue in
+                            .onChange(of: searchText) { newValue in
                                 meetingViewModel.searchQuery = newValue
                             }
-                            //searchable
                             .toast(isPresenting: $meetingViewModel.showError) {
                                 AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)
                             }
@@ -37,16 +36,13 @@ struct OtherView: View {
                     }
                 }
                 .navigationTitle(Text("Tüm Toplantılar"))
-                
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         profileMenu
                     }
+                }
             }
-            }
-            
-        }//navView
-        
+        }
     }
 
     private var meetingsListView: some View {
@@ -66,14 +62,15 @@ struct OtherView: View {
             ForEach(meetings(for: day)) { meeting in
                 NavigationLink(destination: MeetingDetailView(meeting: meeting)) {
                     CardView(meeting: meeting)
-                        .background(Color.blue.gradient.opacity(0.4))
+                        .background(Color.blue.opacity(0.1))
                         .cornerRadius(7)
                         .padding(8)
-                        .background(Color.blue.gradient.opacity(0.3))
+                        .background(Color.blue.opacity(0.05))
                         .cornerRadius(10)
-                        
-                }.listSectionSeparator(.hidden)
-            }.listRowSeparator(.hidden)
+                }
+                .listSectionSeparator(.hidden)
+            }
+            .listRowSeparator(.hidden)
         }
     }
 
@@ -98,6 +95,7 @@ struct OtherView: View {
         }
     }
 }
+
 
 struct OtherView_Previews: PreviewProvider {
     static var previews: some View {

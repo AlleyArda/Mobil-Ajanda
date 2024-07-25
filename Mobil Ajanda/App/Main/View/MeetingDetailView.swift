@@ -6,6 +6,7 @@ import CoreLocation
 struct MeetingDetailView: View {
     var meeting: Meeting
     @AppStorage("isOnHaptic") var isOnHaptic = true
+    
     var body: some View {
         VStack {
             PagerTabStripView {
@@ -37,68 +38,56 @@ struct DetailsView: View {
     var meeting: Meeting
     @State var authViewModel = AuthViewModel()
     @State var meetingViewModel = MeetingViewModel(viewModel: AuthViewModel())
-    @AppStorage("notes") var notes : String = ""
+    @AppStorage("notes") var notes: String = ""
     @FocusState private var focusedField: Field?
+    @State private var isNotesExpanded: Bool = false
+
     enum Field {
-    case notes
+        case notes
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             
-            ZStack{
-                Color.gray.opacity(1)
-                    
-                Color.black.opacity(0.2)
-                    .padding(7)
-                    .cornerRadius(30)
-                Color.white.grayscale(50)
-                    .padding(11)
-                VStack(alignment: .leading , spacing: 1){
-                    
-                    Spacer(minLength: 20)
-                     HStack{
-                        Spacer()
-                        Text("Notlarım")
-                            .frame(width: .infinity)
-                            .font(.headline)
-                        Spacer()
-                    
-                    }//hstackfor Notlarım
-                    
-                    
-                    
-                    //buraya not tutma alanı gelicek
-                    TextEditor(text: $notes)
-                        .padding(2)
-                        
-                        .background(Color.gray.gradient.opacity(0.5))
-                                        .cornerRadius(10)
-                                        .frame(height: .infinity)
-                                        .shadow(radius: 5)
-                                        .padding(13)
-                                        .font(.headline)
-                                        .frame(height: .infinity)
-                                        .frame(minHeight: 200)
-                                        .frame(maxHeight: 210)
-                                        .focused($focusedField , equals: .notes)
-                                        .toolbar{
-                                            ToolbarItemGroup(placement: .keyboard){
-                                                Button("Bitti"){
-                                                    focusedField = nil
-                                                }
-                                                Spacer()
-                                            }
-                                        }
-                    
-                    
+            VStack {
+                HStack {
+                    Spacer()
+                    Text("Notlarım")
+                        .font(.headline)
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            isNotesExpanded.toggle()
+                        }
+                    }) {
+                        Image(systemName: isNotesExpanded ? "chevron.up" : "chevron.down")
+                            .foregroundColor(.blue)
+                    }
                 }
-            }.cornerRadius(10)
-            
-            Spacer()
-            
-            
-            Divider()
+                .padding()
+                .background(Color.blue.opacity(0.1))
+                .cornerRadius(10)
+                .shadow(radius: 5)
+
+                if isNotesExpanded {
+                    TextEditor(text: $notes)
+                        .padding()
+                        .background(Color.blue.opacity(0.2))
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        .frame(minHeight: 200 , maxHeight: 250)
+                        .focused($focusedField, equals: .notes)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Button("Bitti") {
+                                    focusedField = nil
+                                }
+                                Spacer()
+                            }
+                        }
+                }
+            }
+            .padding()
             
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
@@ -126,10 +115,10 @@ struct DetailsView: View {
                 }
             }
             .padding(10)
-            .background(Color.white.gradient.opacity(0.75))
+            .background(Color.white.opacity(0.75))
             .cornerRadius(7)
             .padding(5)
-            .background(Color.blue.gradient.opacity(2))
+            .background(Color.blue.opacity(0.2))
             .cornerRadius(10)
             
             Divider()
@@ -160,16 +149,13 @@ struct DetailsView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.white.gradient.opacity(0.75))
+                .background(Color.white.opacity(0.75))
                 .cornerRadius(7)
                 .padding(8)
-                .background(Color.blue.gradient.opacity(2))
-                .cornerRadius(10)
+                .background(Color.blue.opacity(0.2))
                 .cornerRadius(10)
                 Spacer()
             }
-            
-                        
             
             Spacer()
         }
@@ -203,25 +189,20 @@ struct MapView: View {
                             .resizable()
                             .frame(width: 50, height: 50)
                             .padding(5)
-                        ZStack{
-                            Color.green
-                                .cornerRadius(10)
-                                .frame(minWidth: 0)
+                        Button(action: {
+                            openMapsAppWithDirections(to: userLocation, destinationName: meeting.location)
+                        }) {
                             HStack {
-                                Text("Git")
-                                    .frame(minWidth: 0)
-                                    .foregroundColor(.white
-                                    )
-                                    .font(.headline)
-                                .bold()
-                                Image(systemName: "mappin").colorInvert()
-                                Image(systemName: "arrow.right").font(.footnote)
+                                Text("Haritalar")
+                                    .fontWeight(.bold)
+                                Image(systemName: "arrowshape.turn.up.right.fill")
                             }
-
+                            .padding(10)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.gray, Color.green]), startPoint: .leading, endPoint: .trailing))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 5)
                         }
-                                            }
-                    .onTapGesture {
-                        openMapsAppWithDirections(to: userLocation, destinationName: meeting.location)
                     }
                 }
             }
@@ -246,4 +227,3 @@ struct Detail_Previews: PreviewProvider {
         return MeetingDetailView(meeting: Meeting(id: "1", title: "deneme", location: "123", date: Date(), managerId: "123", driverId: "123", notes: "123", latitude: 25.7602, longitude: -80.1959, managerName: "arda", driverName: "hakan"))
     }
 }
- 

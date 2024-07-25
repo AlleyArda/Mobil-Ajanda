@@ -5,9 +5,9 @@ let mockMeetingsJSON = """
   "meetings": [
     {
       "id": "1",
-      "title": "Günlük Stand-up",
-      "location": "Merkez Ofis",
-      "date": "2024-07-23T09:00:00Z",
+      "title": "Öğle Yemeği",
+      "location": "2.kat",
+      "date": "2024-07-25T08:55:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Günlük takım toplantısı",
@@ -117,7 +117,7 @@ let mockMeetingsJSON = """
       "id": "11",
       "title": "Fatih Bey Görüşme",
       "location": "Kat 12",
-      "date": "2024-07-25T08:10:00Z",
+      "date": "2024-07-25T08:23:00Z",
       "managerId": "1",
       "driverId": "8",
       "notes": "SwiftUI Yenilikler",
