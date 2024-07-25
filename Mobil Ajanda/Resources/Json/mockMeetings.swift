@@ -18,7 +18,7 @@ let mockMeetingsJSON = """
       "id": "2",
       "title": "Müşteri Toplantısı",
       "location": "Dış Lokasyon",
-      "date": "2024-07-24T11:00:00Z",
+      "date": "2024-07-24T09:20:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Müşteriyle proje görüşmesi",
@@ -29,7 +29,7 @@ let mockMeetingsJSON = """
       "id": "3",
       "title": "Proje Planlama",
       "location": "Merkez Ofis",
-      "date": "2024-07-24T10:00:00Z",
+      "date": "2024-07-25T09:35:00Z",
       "managerId": "1",
       "driverId": "5",
       "notes": "Yeni proje planlama toplantısı",
@@ -40,7 +40,7 @@ let mockMeetingsJSON = """
       "id": "4",
       "title": "Güvenlik Eğitimi",
       "location": "Eğitim Salonu",
-      "date": "2024-07-24T13:00:00Z",
+      "date": "2024-07-25T10:00:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Güvenlik personeli eğitimi",
@@ -51,7 +51,7 @@ let mockMeetingsJSON = """
       "id": "5",
       "title": "Yıllık Değerlendirme",
       "location": "Toplantı Odası 2",
-      "date": "2024-07-23T15:00:00Z",
+      "date": "2024-07-25T15:00:00Z",
       "managerId": "1",
       "driverId": "8",
       "notes": "Yılın değerlendirilmesi",
@@ -62,7 +62,7 @@ let mockMeetingsJSON = """
       "id": "6",
       "title": "Strateji Toplantısı",
       "location": "Merkez Ofis",
-      "date": "2024-07-24T09:00:00Z",
+      "date": "2024-07-25T09:00:00Z",
       "managerId": "1",
       "driverId": "2",
       "notes": "Şirket stratejisi belirleme",
@@ -112,6 +112,17 @@ let mockMeetingsJSON = """
       "notes": "Personel sorunları ve öneriler",
       "latitude": 41.008237,
       "longitude": 28.978358
+    },
+    {
+      "id": "11",
+      "title": "Fatih Bey Görüşme",
+      "location": "Kat 12",
+      "date": "2024-07-25T08:10:00Z",
+      "managerId": "1",
+      "driverId": "8",
+      "notes": "SwiftUI Yenilikler",
+      "latitude": 41.015137,
+      "longitude": 28.979530
     }
   ]
 }

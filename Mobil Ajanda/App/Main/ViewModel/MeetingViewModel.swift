@@ -1,6 +1,4 @@
-import Foundation
-import Observation
-import MapKit
+import UserNotifications
 
 @Observable
 class MeetingViewModel {
@@ -14,7 +12,12 @@ class MeetingViewModel {
     }
     var viewModel: AuthViewModel
     public var meetings: [Meeting] = []
-    public var filteredMeetings: [Meeting] = []
+    public var filteredMeetings: [Meeting] = [] {
+        didSet {
+            // Schedule notifications for filtered meetings
+            scheduleNotifications()
+        }
+    }
     public var searchedMeetings: [Meeting] = []
 
     init(viewModel: AuthViewModel) {
@@ -32,7 +35,6 @@ class MeetingViewModel {
             if let mockMeetingsJSON = mockMeetingsJSON {
                 let meetingData = try decoder.decode([String: [Meeting]].self, from: mockMeetingsJSON)
                 if var meetings = meetingData["meetings"] {
-                    // Meeting içindeki managerName ve driverName değerlerini ayarlayalım
                     for index in meetings.indices {
                         meetings[index].managerName = viewModel.getUserName(id: meetings[index].managerId)
                         meetings[index].driverName = viewModel.getUserName(id: meetings[index].driverId)
@@ -56,7 +58,7 @@ class MeetingViewModel {
         case .driver:
             filteredMeetings = meetings.filter { $0.driverId == user.id }
         case .securityChief:
-            filteredMeetings = meetings // full access, no filtering
+            filteredMeetings = meetings // Full access, no filtering
         }
         searchMeetings()
     }
@@ -82,6 +84,36 @@ class MeetingViewModel {
         let today = Calendar.current.startOfDay(for: Date())
         return searchedMeetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
     }
+    
+    private func scheduleNotification(for meeting: Meeting) {
+        let content = UNMutableNotificationContent()
+        content.title = "Meeting Reminder"
+        content.body = "Your meeting \(meeting.title) at \(meeting.location) is starting soon."
+        content.sound = .default
+        
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: meeting.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+        let request = UNNotificationRequest(identifier: meeting.id, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Notification scheduled for meeting \(meeting.title)")
+            }
+        }
+    }
+    
+    private func scheduleNotifications() {
+        guard let user = viewModel.currentUser else { return }
+        
+        let relevantMeetings = filteredMeetings.filter { $0.managerId == user.id || $0.driverId == user.id }
+        
+        for meeting in relevantMeetings {
+            scheduleNotification(for: meeting)
+        }
+    }
 }
 
 func sectionHeader(for day: String) -> String {
@@ -106,6 +138,6 @@ extension DateFormatter {
 
 func currentDay() -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "d" // Sadece gün
+    formatter.dateFormat = "d"
     return formatter.string(from: Date())
 }
