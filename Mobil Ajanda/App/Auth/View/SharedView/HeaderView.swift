@@ -43,5 +43,5 @@ struct HeaderView: View {
 }
 
 #Preview {
-    HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", background: .blue)
+    HeaderView(title: "Hoşgeldiniz", subTitle: "Mobil Ajanda", background: .blue.opacity(0.7))
 }
