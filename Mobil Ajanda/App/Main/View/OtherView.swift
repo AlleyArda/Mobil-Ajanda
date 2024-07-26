@@ -96,7 +96,6 @@ struct OtherView: View {
     }
 }
 
-
 struct OtherView_Previews: PreviewProvider {
     static var previews: some View {
         let authViewModel = AuthViewModel()

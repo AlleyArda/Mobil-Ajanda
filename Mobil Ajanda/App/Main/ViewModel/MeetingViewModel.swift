@@ -72,17 +72,26 @@ class MeetingViewModel {
     }
     
     func groupedMeetingsByDay() -> [String: [Meeting]] {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        return Dictionary(grouping: searchedMeetings) { meeting in
-            formatter.string(from: meeting.date)
-        }
-    }
+          let formatter = DateFormatter()
+          formatter.dateFormat = "yyyy-MM-dd"
+          
+          let groupedMeetings = Dictionary(grouping: searchedMeetings) { meeting in
+              formatter.string(from: meeting.date)
+          }
+          
+          // Gün içindeki toplantıları saatlerine göre sıralar
+          var sortedGroupedMeetings: [String: [Meeting]] = [:]
+          for (day, meetings) in groupedMeetings {
+              sortedGroupedMeetings[day] = meetings.sorted(by: { $0.date < $1.date })
+          }
+          
+          return sortedGroupedMeetings
+      }
     
     func todayMeetings() -> [Meeting] {
         let today = Calendar.current.startOfDay(for: Date())
         return searchedMeetings.filter { Calendar.current.isDate($0.date, inSameDayAs: today) }
+            .sorted(by: {$0.date < $1.date})
     }
     
     private func scheduleNotification(for meeting: Meeting) {

@@ -71,8 +71,6 @@ struct TodayView: View {
     }
 }
 
-
-
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
         let authViewModel = AuthViewModel()
