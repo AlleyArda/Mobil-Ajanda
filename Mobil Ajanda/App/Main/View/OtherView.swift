@@ -17,8 +17,8 @@ struct OtherView: View {
                             .listStyle(.plain)
                             .bold()
                             .searchable(text: $searchText)
-                            .onChange(of: searchText) { newValue in
-                                meetingViewModel.searchQuery = newValue
+                            .onChange(of: searchText) {
+                                meetingViewModel.searchQuery = searchText
                             }
                             .toast(isPresenting: $meetingViewModel.showError) {
                                 AlertToast(displayMode: .alert, type: .error(.red), title: "Uyarı", subTitle: meetingViewModel.errorMessage)

@@ -18,84 +18,85 @@ struct SettingsView: View {
                         Image("tedas-logo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .opacity(0.6)
                         Spacer()
                     }
                     .frame(height: 150)
                     .padding(.horizontal , 16)
                     .shadow(radius: 10 , y: 10.4)
                     
-                   
-                            Color.blue
-                                .opacity(0.1)
-                                .cornerRadius(12)
-                                .shadow(color: .gray.opacity(0.3), radius: 10, x: 0, y: 5)
-                                .overlay {
-                                    HStack {
-                                        Group {
-                                            if authViewModel.currentRole == .manager {
-                                                Image(systemName: "person.badge.shield.checkmark")
-                                                    .foregroundColor(.blue)
-                                                    .font(.largeTitle)
-                                            } else if authViewModel.currentRole == .securityChief {
-                                                Image(systemName: "eye.trianglebadge.exclamationmark")
-                                                    .foregroundColor(.blue)
-                                                    .font(.largeTitle)
-                                            } else if authViewModel.currentRole == .driver {
-                                                Image(systemName: "steeringwheel")
-                                                    .foregroundColor(.blue)
-                                                    .font(.largeTitle)
-                                            }
-                                        }
-                                        .padding(.trailing, 8)
-                                        
-                                        VStack(alignment: .leading, spacing: -10) {
-                                            // Fullname
-                                            SettingText(title: "\(authViewModel.fullname)", foregroundColor: .black)
-                                                .font(.headline)
-                                                .bold()
-                                                
-                                                .fontWeight(.heavy)
-                                                
-                                            Divider()
-                                            
-                                            
-                                            
-                                            // Current Role
-                                            switch authViewModel.currentRole {
-                                            case .manager:
-                                                SettingText(title: "Makam", foregroundColor: .black)
-                                                    .font(.subheadline)
-                                                    .fontWeight(.thin)
-                                                    .italic()
-                                                    .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
-                                            case .driver:
-                                                SettingText(title: "Sürücü", foregroundColor: .black)
-                                                    .font(.subheadline)
-                                                    .fontWeight(.regular)
-                                                    .italic()
-                                                    .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
-                                            case .securityChief:
-                                                SettingText(title: "Güvenlik Şefi", foregroundColor: .black)
-                                                    .font(.subheadline)
-                                                    .fontWeight(.regular)
-                                                    .italic()
-                                                    .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
-                                            case .none:
-                                                Text("Error")
-                                                    .foregroundColor(.red)
-                                                    .font(.subheadline)
-                                                    .fontWeight(.heavy)
-                                            }
-                                        }//vstack
-                                        
-                                        Spacer()
-                                    }//stack
-                                    .padding()
-                                    .background(Color.white)
-                                    .cornerRadius(12)
+                    
+                    Color.blue
+                        .opacity(0.1)
+                        .cornerRadius(12)
+                        .shadow(color: .gray.opacity(0.3), radius: 10, x: 0, y: 5)
+                        .overlay {
+                            HStack {
+                                Group {
+                                    if authViewModel.currentRole == .manager {
+                                        Image(systemName: "person.badge.shield.checkmark")
+                                            .foregroundColor(.blue)
+                                            .font(.largeTitle)
+                                    } else if authViewModel.currentRole == .securityChief {
+                                        Image(systemName: "eye.trianglebadge.exclamationmark")
+                                            .foregroundColor(.blue)
+                                            .font(.largeTitle)
+                                    } else if authViewModel.currentRole == .driver {
+                                        Image(systemName: "steeringwheel")
+                                            .foregroundColor(.blue)
+                                            .font(.largeTitle)
+                                    }
                                 }
-                                .padding(.init(top: 60, leading: 10, bottom: 50, trailing: 10))
-                     
+                                .padding(.trailing, 8)
+                                
+                                VStack(alignment: .leading, spacing: -10) {
+                                    // Fullname
+                                    SettingText(title: "\(authViewModel.fullname)", foregroundColor: .black)
+                                        .font(.headline)
+                                        .bold()
+                                    
+                                        .fontWeight(.heavy)
+                                    
+                                    Divider()
+                                    
+                                    
+                                    
+                                    // Current Role
+                                    switch authViewModel.currentRole {
+                                    case .manager:
+                                        SettingText(title: "Makam", foregroundColor: .black)
+                                            .font(.subheadline)
+                                            .fontWeight(.thin)
+                                            .italic()
+                                            .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+                                    case .driver:
+                                        SettingText(title: "Sürücü", foregroundColor: .black)
+                                            .font(.subheadline)
+                                            .fontWeight(.regular)
+                                            .italic()
+                                            .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+                                    case .securityChief:
+                                        SettingText(title: "Güvenlik Şefi", foregroundColor: .black)
+                                            .font(.subheadline)
+                                            .fontWeight(.regular)
+                                            .italic()
+                                            .padding(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+                                    case .none:
+                                        Text("Error")
+                                            .foregroundColor(.red)
+                                            .font(.subheadline)
+                                            .fontWeight(.heavy)
+                                    }
+                                }//vstack
+                                
+                                Spacer()
+                            }//stack
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(12)
+                        }
+                        .padding(.init(top: 60, leading: 10, bottom: 50, trailing: 10))
+                    
                     
                     
                     
@@ -111,7 +112,7 @@ struct SettingsView: View {
                     /// Use any of the pre-made components...
                     SettingToggle(title: "Beni Hatırla!", isOn: $isOn)
                     SettingToggle(title: "Titreşim", isOn: $isOnHaptic)
-            
+                    
                     //UserDefaults.standard.setValue(cookie, forKey: "cookie")
                     
                     /// ...or define your own ones!
