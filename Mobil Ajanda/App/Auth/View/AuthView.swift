@@ -85,6 +85,7 @@ struct AuthView: View {
                                 login()
                             }) {
                                 Text("Giriş Yap")
+                                    .font(.title2)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
                                     .background(Color.blue.opacity(0.7))
