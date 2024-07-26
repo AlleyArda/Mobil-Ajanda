@@ -16,7 +16,7 @@ struct MeetingDetailView: View {
                     }
                 MapView(meeting: meeting)
                     .pagerTabItem(tag: 2) {
-                        PageItem(title: "Harita")
+                        PageItem(title: "Konum")
                     }
             }
         }
