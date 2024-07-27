@@ -64,19 +64,24 @@ struct DetailsView: View {
                             .foregroundColor(.blue)
                     }
                 }
-                .padding()
-                .background(Color.blue.opacity(0.1))
+                .padding(10)
+                .background(Color.white.opacity(0.75))
+                .cornerRadius(7)
+                .padding(5)
+                .background(Color.blue.opacity(0.2))
                 .cornerRadius(10)
-                .shadow(radius: 5)
+                
 
                 if isNotesExpanded {
                     TextEditor(text: $notes)
-                        .padding()
+                        .padding(10)
+                        .background(Color.white.opacity(0.75))
+                        .cornerRadius(7)
+                        .padding(5)
                         .background(Color.blue.opacity(0.2))
                         .cornerRadius(10)
-                        .shadow(radius: 5)
-                        .frame(minHeight: 200 , maxHeight: 250)
                         .focused($focusedField, equals: .notes)
+                        
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Button("Bitti") {
@@ -85,9 +90,10 @@ struct DetailsView: View {
                                 Spacer()
                             }
                         }
+                    
                 }
             }
-            .padding()
+            
             
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
@@ -124,8 +130,9 @@ struct DetailsView: View {
             Divider()
             
             HStack {
-                Spacer()
-                VStack(alignment: .leading, spacing: 5) {
+                
+                VStack(alignment: .center
+                       , spacing: 5) {
                     Text(meeting.title)
                         .font(.title)
                         .fontWeight(.bold)
@@ -151,14 +158,15 @@ struct DetailsView: View {
                 .padding()
                 .background(Color.white.opacity(0.75))
                 .cornerRadius(7)
-                .padding(8)
+                .padding(5)
                 .background(Color.blue.opacity(0.2))
                 .cornerRadius(10)
-                Spacer()
-            }
+                
+            }//hstack
             
             Spacer()
         }
+        .ignoresSafeArea(.keyboard)
         .padding()
     }
 }

@@ -10,7 +10,7 @@ struct OtherView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack { 
                 VStack {
                     if authViewModel.currentUser != nil {
                         meetingsListView
