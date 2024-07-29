@@ -88,6 +88,7 @@ struct AuthView: View {
                                     .font(.title3)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
+                                    .font(.title2)
                                     .background(Color.blue.opacity(0.7))
                                     .foregroundColor(.white)
                                     .cornerRadius(10)

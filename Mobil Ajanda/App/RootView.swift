@@ -12,6 +12,19 @@ struct RootView: View {
                 case .manager, .driver, .securityChief:
                     TabView(selection: $selection) {
                         
+                        TodayView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
+                            .tabItem {
+                                Label("Bugün", systemImage: "calendar")
+                            }
+                            .tag(2)
+                            .background(GeometryReader { _ in
+                                Color.clear.onAppear {
+                                    if isOnHaptic {
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                                    }
+                                }
+                            })
+                        
                         OtherView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
                             .tabItem {
                                 Label("Program", systemImage: "magnifyingglass")
@@ -25,18 +38,7 @@ struct RootView: View {
                                 }
                             })
                         
-                        TodayView(meetingViewModel: MeetingViewModel(viewModel: viewmodel), authViewModel: viewmodel)
-                            .tabItem {
-                                Label("Bugün", systemImage: "calendar")
-                            }
-                            .tag(2)
-                            .background(GeometryReader { _ in
-                                Color.clear.onAppear {
-                                    if isOnHaptic {
-                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                                    }
-                                }
-                            })
+                        
                         
                         SettingsView(authViewModel: viewmodel)
                             .tabItem {
