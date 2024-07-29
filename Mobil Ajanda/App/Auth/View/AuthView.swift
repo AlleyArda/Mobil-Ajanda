@@ -85,6 +85,7 @@ struct AuthView: View {
                                 login()
                             }) {
                                 Text("Giriş Yap")
+                                    .font(.title3)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
                                     .font(.title2)
@@ -111,7 +112,7 @@ struct AuthView: View {
                         
                         Text("TEDAŞ Bilgi Teknolojileri")
                             .bold()
-                            .font(.title2)
+                            .font(.title3)
                         
                         Button("Şifremi Unuttum") {
                             // Handle forgot password action
