@@ -202,7 +202,7 @@ struct MapView: View {
                         }) {
                             HStack {
                                 Text("Haritalar")
-                                    .fontWeight(.bold)
+                                    .fontWeight(.black)
                                 Image(systemName: "arrowshape.turn.up.right.fill")
                             }
                             .padding(10)

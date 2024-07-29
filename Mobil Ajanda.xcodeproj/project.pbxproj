@@ -31,7 +31,7 @@
 		DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */; };
 		DEB40C122C3C117D00DD2DF4 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DEB40C112C3C117D00DD2DF4 /* AlertToast */; };
 		DEB40C142C3C1DE800DD2DF4 /* SecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */; };
-		DED7CDD62C3C0E32009660E9 /* HseaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7CDD52C3C0E32009660E9 /* HseaderView.swift */; };
+		DED7CDD62C3C0E32009660E9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7CDD52C3C0E32009660E9 /* HeaderView.swift */; };
 		DEE9759F2C4155E500331761 /* PagerTabStripView in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9759E2C4155E500331761 /* PagerTabStripView */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 		DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		DEB40C0E2C3C10DF00DD2DF4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
-		DED7CDD52C3C0E32009660E9 /* HseaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HseaderView.swift; sourceTree = "<group>"; };
+		DED7CDD52C3C0E32009660E9 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +242,7 @@
 		DED7CDD42C3C0E0C009660E9 /* SharedView */ = {
 			isa = PBXGroup;
 			children = (
-				DED7CDD52C3C0E32009660E9 /* HseaderView.swift */,
+				DED7CDD52C3C0E32009660E9 /* HeaderView.swift */,
 				DEB40C0C2C3C100900DD2DF4 /* LoginButton.swift */,
 				DEB40C132C3C1DE800DD2DF4 /* SecureFieldView.swift */,
 				01BAF6B82C3C2742003127D2 /* TextFieldView.swift */,
@@ -342,7 +342,7 @@
 				010757BC2C3EC3E800E6EF28 /* MeetingViewModel.swift in Sources */,
 				011F8E632C3BCD12003AED23 /* MockData.swift in Sources */,
 				DEB40C142C3C1DE800DD2DF4 /* SecureFieldView.swift in Sources */,
-				DED7CDD62C3C0E32009660E9 /* HseaderView.swift in Sources */,
+				DED7CDD62C3C0E32009660E9 /* HeaderView.swift in Sources */,
 				01E99A672C37D9D10090C398 /* Constants.swift in Sources */,
 				011F8E6F2C3BDD83003AED23 /* mockMeetings.swift in Sources */,
 				DEB40C0F2C3C10DF00DD2DF4 /* AuthView.swift in Sources */,

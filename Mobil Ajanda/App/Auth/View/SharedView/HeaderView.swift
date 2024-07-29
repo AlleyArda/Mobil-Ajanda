@@ -44,7 +44,7 @@ struct HeaderView: View {
                     .frame(width: 100, height: 100)
                     .padding()
                     .shadow(color: .black.opacity(0.3), radius: 20, x: 0, y: 10)
-                    .scaleEffect(logoAnimation ? 1.0 : 1.1)
+                    .scaleEffect(logoAnimation ? 1.0 : 1.2)
                     .opacity(logoAnimation ? 0.7 : 1.0)
                     .onAppear {
                         withAnimation(Animation.easeInOut(duration: 2.0).repeatForever(autoreverses: true).delay(2.0)) {
