@@ -111,7 +111,7 @@ struct AuthView: View {
                         
                         Text("TEDAŞ Bilgi Teknolojileri")
                             .bold()
-                            .font(.title2)
+                            .font(.title3)
                         
                         Button("Şifremi Unuttum") {
                             // Handle forgot password action
