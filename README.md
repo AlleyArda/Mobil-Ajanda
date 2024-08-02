@@ -20,7 +20,7 @@ Mobil-Ajanda , kullanıcıların toplantılarını ve şoförlerin görevlerini 
 - Xcode 12.0 veya üstü
 
 ## Screenshots
-![Settings](Ayarlar.png)
+![Login](Giriş.png)
 ![Today View](Today.png)
 ![All Meetings](All.png)
 ![Meeting Detail](Ayrıntılar.png)
