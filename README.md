@@ -19,6 +19,11 @@ Mobil-Ajanda , kullanıcıların toplantılarını ve şoförlerin görevlerini 
 - macOS 11.0 veya üstü
 - Xcode 12.0 veya üstü
 
+## Screenshots
+![Home Screen](Giriş.png)
+![Detail View](detail.png)
+![Sorting Options](filter.png)
+
 ### Adımlar
 
 1. Bu repository'i klonlayın:
