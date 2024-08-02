@@ -193,7 +193,7 @@ struct MapView: View {
             Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, annotationItems: [meeting]) { _ in
                 MapAnnotation(coordinate: userLocation) {
                     VStack {
-                        Image("tedas-logo")
+                        Image("icon1")
                             .resizable()
                             .frame(width: 50, height: 50)
                             .padding(5)

@@ -15,10 +15,11 @@ struct SettingsView: View {
                 SettingCustomView {
                     HStack{
                         Spacer()
-                        Image("tedas-logo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            Image("icon1")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                             .opacity(0.6)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                         Spacer()
                     }
                     .frame(height: 150)

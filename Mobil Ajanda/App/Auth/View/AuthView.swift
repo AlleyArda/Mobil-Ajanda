@@ -110,7 +110,7 @@ struct AuthView: View {
                     VStack {
                         Divider()
                         
-                        Text("TEDAŞ Bilgi Teknolojileri")
+                        Text("İEDAŞ Bilgi Teknolojileri")
                             .bold()
                             .font(.title3)
                         

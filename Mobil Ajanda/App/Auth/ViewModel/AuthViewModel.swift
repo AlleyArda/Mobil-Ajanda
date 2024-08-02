@@ -2,7 +2,7 @@ import Foundation
 import Observation
 @Observable
 class AuthViewModel {
-    var email: String = "arda.kulaksiz@tedas.gov.tr"
+    var email: String = "arda.kulaksiz@iedas.gov.tr"
     var password: String = "123456"
     var errorMessage: String = ""
     var showError: Bool = false

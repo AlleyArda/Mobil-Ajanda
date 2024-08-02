@@ -38,11 +38,12 @@ struct HeaderView: View {
                         }
                     }
 
-                Image("tedas-logo")
+                Image("icon1")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
                     .padding()
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .shadow(color: .black.opacity(0.3), radius: 20, x: 0, y: 10)
                     .scaleEffect(logoAnimation ? 1.0 : 1.2)
                     .opacity(logoAnimation ? 0.7 : 1.0)

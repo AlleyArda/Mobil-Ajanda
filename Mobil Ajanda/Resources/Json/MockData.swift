@@ -7,7 +7,7 @@ let mockUsersJSON = """
     {
       "id": "1",
       "name": "Ali Arda Kulaksız",
-      "email": "arda.kulaksiz@tedas.gov.tr",
+      "email": "arda.kulaksiz@iedas.gov.tr",
       "password": "123456",
       "role": "manager"
     },
@@ -28,49 +28,49 @@ let mockUsersJSON = """
     {
       "id": "4",
       "name": "Fatma Yılmaz",
-      "email": "fatma.yilmaz@tedas.gov.tr",
+      "email": "fatma.yilmaz@iedas.gov.tr",
       "password": "qwerty",
       "role": "manager"
     },
     {
       "id": "5",
       "name": "Ahmet Çelik",
-      "email": "ahmet.celik@tedas.gov.tr",
+      "email": "ahmet.celik@iedas.gov.tr",
       "password": "password",
       "role": "driver"
     },
     {
       "id": "6",
       "name": "Emine Şahin",
-      "email": "emine.sahin@tedas.gov.tr",
+      "email": "emine.sahin@iedas.gov.tr",
       "password": "987654",
       "role": "securityChief"
     },
     {
       "id": "7",
       "name": "Mustafa Aydın",
-      "email": "mustafa.aydin@tedas.gov.tr",
+      "email": "mustafa.aydin@iedas.gov.tr",
       "password": "aydin123",
       "role": "manager"
     },
     {
       "id": "8",
       "name": "Zeynep Kılıç",
-      "email": "zeynep.kilic@tedas.gov.tr",
+      "email": "zeynep.kilic@iedas.gov.tr",
       "password": "kilic987",
       "role": "driver"
     },
     {
       "id": "9",
       "name": "Hüseyin Demirtaş",
-      "email": "huseyin.demirtas@tedas.gov.tr",
+      "email": "huseyin.demirtas@iedas.gov.tr",
       "password": "demirtas321",
       "role": "securityChief"
     },
     {
       "id": "10",
       "name": "Elif Özdemir",
-      "email": "elif.ozdemir@tedas.gov.tr",
+      "email": "elif.ozdemir@iedas.gov.tr",
       "password": "ozdemir456",
       "role": "manager"
     }
